@@ -1,161 +1,254 @@
-# Preparación del entorno de desarrollo — Grupo 8 MCDI500
+# Configuración del entorno de desarrollo — Grupo 8 MCDI500
 
-## Revisión inicial
+## 1. Propósito
 
-El 20 de noviembre de 2026 se revisaron las instalaciones de Python disponibles en el equipo desde Windows PowerShell, antes de preparar el entorno del proyecto.
+Se configuró un entorno de desarrollo para el proyecto de la asignatura Programación para la Ciencia de Datos (MCDI500). La preparación comprendió la creación de un entorno virtual, la instalación de las dependencias y la comprobación del intérprete y las librerías de análisis de datos.
 
-Se ejecutaron los siguientes comandos.
+Fecha de registro: 20 de noviembre de 2026.
 
-```powershell
-py --list-paths
-python --version
-python -m pip --version
-python -m pip list
-git --version
-gh --version
-```
+## 2. Configuración del proyecto
 
-El lanzador identificó instalaciones de Python 3.14 y Python 3.12. El comando `python` ejecutaba Python 3.14.7 y utilizaba pip 26.2.1. En esa instalación estaban disponibles NumPy 2.5.2 y pandas 3.0.5.
+Se utiliza Windows PowerShell como terminal y Visual Studio Code como editor. El entorno virtual `.venv` se encuentra en la raíz de `proyecto-grupo8-mcdi500`.
 
-| Componente | Resultado observado |
+| Componente | Configuración registrada |
 |---|---|
-| Python activo | 3.14.7 |
-| Python adicional | Serie 3.12; versión de mantenimiento sin comprobar |
-| pip asociado a Python 3.14 | 26.2.1 |
-| NumPy asociado a Python 3.14 | 2.5.2 |
-| pandas asociado a Python 3.14 | 3.0.5 |
-| Git | 2.34.1.windows.1 |
-| GitHub CLI | 2.32.1 |
-
-## Editor de desarrollo
-
-Se utiliza Visual Studio Code (VS Code) para editar los archivos del proyecto, trabajar con la terminal integrada y revisar la documentación Markdown. Su versión está pendiente de registrar.
-
-Para trabajar con los notebooks se comprobarán las extensiones Python y Jupyter de Microsoft, el intérprete seleccionado y el kernel de cada cuaderno.
-
-| Componente | Estado |
-|---|---|
-| Visual Studio Code | En uso; versión pendiente de registrar |
-| Extensión Python de Microsoft | Instalación y versión pendientes de comprobar |
-| Extensión Jupyter de Microsoft | Instalación y versión pendientes de comprobar |
-| Intérprete del proyecto en VS Code | Pendiente de seleccionar y verificar |
-| Kernel de los notebooks | Pendiente de seleccionar y verificar |
-
-La versión de VS Code se consultará en Ayuda → Acerca de. Las versiones de las extensiones se consultarán en su panel de detalles.
-
-## Decisión de configuración
-
-Se decidió preparar una instalación limpia y conservar una única versión de Python en el equipo para simplificar la selección del intérprete, la instalación de dependencias y la configuración del kernel de Jupyter.
-
-Se mantiene la serie Python 3.13, utilizada en el ejemplo de ejecución de la guía docente. La propuesta de pasar a Python 3.14 se revisó al comprobar que las dependencias fijadas también publican paquetes para Python 3.13 en Windows de 64 bits.
-
-Python 3.13.17 dispone de un instalador oficial de Windows de 64 bits. Python 3.13.18 es posterior e incorpora correcciones de seguridad; su página oficial indica que se distribuye únicamente como código fuente. Se registra Python 3.13.17 como candidato para la instalación mediante el ejecutable oficial y se deja constancia de que existe una versión de mantenimiento posterior.
-
-La versión finalmente instalada se registrará después de ejecutar el instalador y comprobar el intérprete.
-El script `validar_dataset.py` utiliza pandas para leer, perfilar y evaluar el conjunto de datos. También emplea `pd.to_datetime` con `format="mixed"`, disponible desde pandas 2.0. La comprobación del validador se realizará con las dependencias declaradas en el proyecto y un archivo de datos real.
-
-La compatibilidad del entorno completo se confirmará mediante la instalación de dependencias, sus importaciones y la ejecución del validador.
-
-## Instalación prevista
-
-Se retirarán las instalaciones anteriores desde la administración de aplicaciones de Windows. Se prevé utilizar el instalador oficial de Python 3.13.17 de 64 bits, con pip y el lanzador de Python habilitados. La versión instalada se confirmará desde la consola.
-
-Tras la instalación se registrarán la fecha, la ruta del intérprete y las versiones obtenidas mediante los siguientes comandos.
-
-```powershell
-py --list-paths
-py -3.13 --version
-py -3.13 -m pip --version
-```
-
-Se creará un entorno virtual `.venv` dentro del proyecto. Las dependencias y Jupyter se instalarán en ese entorno, y el kernel del notebook se configurará para utilizar su intérprete.
-
-## Registro de la instalación y las verificaciones
-
-Al completar la instalación se incorporarán los resultados observados en la siguiente tabla.
-
-| Comprobación | Resultado |
-|---|---|
-| Fecha de instalación | Pendiente |
-| Versiones anteriores retiradas | Pendiente de verificar |
-| Versión completa de Python instalada | Pendiente |
-| Arquitectura de Python | Pendiente |
-| Ruta de instalación de Python | Pendiente |
-| Opciones seleccionadas en el instalador | Pendiente |
-| Comandos de creación y activación de `.venv` | Pendiente de registrar |
-| Ruta del intérprete de `.venv` | Pendiente |
-| Versión de pip dentro de `.venv` | Pendiente |
-| Versiones de las dependencias instaladas | Pendiente |
-| Importación de las librerías del proyecto | Pendiente |
-| Comprobación de dependencias con `python -m pip check` | Pendiente |
-| Ejecución de una celda en Jupyter con el kernel del proyecto | Pendiente |
-| Ejecución de `validar_dataset.py` y archivo utilizado | Pendiente |
-| Informe generado por el validador | Pendiente |
-
-Las versiones efectivamente instaladas se reflejarán también en `requirements.txt`. Las instrucciones de reconstrucción del entorno se incorporarán al README. Se registrarán los ajustes aplicados, su motivo y la comprobación posterior.
-
-La ejecución del validador se documentará indicando si logró leer y evaluar el archivo, junto con los requisitos cumplidos y los avisos detectados. La evaluación del dataset y la comprobación de funcionamiento del entorno tendrán sus respectivos resultados.
-
-## Comprobación previa de disponibilidad y dependencias
-
-Se consultó el instalador oficial `python-3.13.17-amd64.exe`. El servidor respondió HTTP 200 y declaró un tamaño de 29.941.280 bytes.
-
-Se realizó una resolución simulada con pip para CPython 3.13, plataforma win_amd64 y paquetes binarios, usando las cinco dependencias del requirements.txt. La resolución finalizó con código de salida 0 y seleccionó los siguientes paquetes principales.
-
-| Paquete | Versión seleccionada en la simulación |
-|---|---|
-| ipykernel | 7.4.0 |
-| jupyterlab | 4.6.6 |
-| notebook | 7.6.5 |
-| numpy | 2.5.4 |
+| Python | 3.13.17 |
+| Entorno virtual | `.venv` |
+| Intérprete del proyecto | `.venv\Scripts\python.exe` |
+| pip | 26.2.2, según el registro de instalación |
+| NumPy | 2.5.4 |
 | pandas | 3.1.0 |
+| ipykernel | 7.4.0 |
+| JupyterLab | 4.6.6 |
+| Notebook | 7.6.5 |
 
-La simulación se realizó desde un entorno distinto al equipo Windows de desarrollo. La disponibilidad de paquetes y la resolución comprobadas respaldan la instalación propuesta. El conjunto final de dependencias, incluidas las específicas de Windows, se confirmará durante la instalación real. La ejecución de Jupyter, las importaciones y el validador siguen pendientes.
+Las versiones de las dependencias se obtuvieron del registro de instalación. Las versiones de NumPy y pandas se comprobaron adicionalmente mediante su importación desde el intérprete del entorno virtual.
 
-## Estado del registro
+## 3. Creación y activación del entorno virtual
 
-La revisión inicial y la decisión de configuración están documentadas. La desinstalación de las versiones anteriores, la instalación de Python 3.13, la creación del entorno virtual y las comprobaciones del validador están pendientes de confirmación.
+Desde la raíz del proyecto se ejecutaron los siguientes comandos:
 
-Este documento se actualizará con los resultados de cada paso realizado.
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-## Incorporación al informe técnico
+El entorno virtual mantiene las dependencias del proyecto aisladas de las bibliotecas instaladas en otros entornos. Su configuración se apoya en la instalación base de Python utilizada para crearlo.
 
-Este registro respalda el apartado de reproducibilidad técnica del informe. La siguiente redacción describe el estado actual del trabajo.
+La activación incorpora el indicador `(.venv)` a la terminal y prioriza los ejecutables del entorno. Para comprobar la versión y la ubicación del intérprete se ejecutó:
 
-Durante la preparación del entorno se identificaron instalaciones de Python 3.14 y 3.12 en el equipo. El intérprete activo correspondía a Python 3.14.7, con pip 26.2.1, NumPy 2.5.2 y pandas 3.0.5. Se mantiene la serie Python 3.13 y se verificó la disponibilidad del instalador oficial de Python 3.13.17 de 64 bits, junto con paquetes de NumPy 2.5.4 y pandas 3.1.0 para esa serie. Se registró que Python 3.13.18 es posterior y se publica como código fuente. Se utiliza Visual Studio Code como editor y se prevé configurar sus extensiones Python y Jupyter para trabajar con el entorno virtual del proyecto. El funcionamiento se comprobará mediante importaciones, la selección del kernel de Jupyter y la ejecución de `validar_dataset.py` sobre el conjunto de datos seleccionado. Los resultados de estas verificaciones se incorporarán al informe una vez completadas.
+```powershell
+python --version
+python -c "import sys; print(sys.executable)"
+```
 
-Al cerrar la instalación, este párrafo se actualizará con las versiones confirmadas, las pruebas ejecutadas y sus resultados. Los campos pendientes conservarán ese estado hasta completar su comprobación.
+Se obtuvo Python 3.13.17 y una ruta correspondiente a `.venv\Scripts\python.exe` dentro del proyecto.
+
+La activación se realiza en cada nueva sesión de PowerShell que deba utilizar el entorno:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+La desactivación se realiza mediante:
+
+```powershell
+deactivate
+```
+
+## 4. Selección del intérprete en Visual Studio Code
+
+Se seleccionó `.venv` como entorno de Python del proyecto en Visual Studio Code. La selección de `.venv\Scripts\python.exe` permite utilizar Python 3.13.17 y las dependencias instaladas para el proyecto.
+
+La selección se realizó mediante la paleta de comandos:
+
+1. Apertura de la paleta con Ctrl + Shift + P.
+2. Ejecución de **Python: Select Interpreter**.
+3. Selección de `.venv\Scripts\python.exe`.
+
+La configuración del intérprete del editor y la selección del kernel de un notebook son independientes. La comprobación del kernel se realizará cuando se ejecute el cuaderno correspondiente.
+
+## 5. Instalación y verificación de dependencias
+
+Las dependencias declaradas en `requirements.txt` se instalaron desde el entorno virtual:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip check
+```
+
+La instalación finalizó con el mensaje `Successfully installed`. La comprobación de dependencias produjo el siguiente resultado:
+
+```text
+No broken requirements found.
+```
+
+Este resultado indica que pip no detectó conflictos en las dependencias declaradas por los paquetes instalados. La verificación funcional del análisis de datos requiere ejecutar posteriormente los scripts y notebooks del proyecto.
+
+Para comprobar las importaciones y las versiones principales se ejecutó:
+
+```powershell
+python -c "import sys, pandas, numpy; print(sys.executable); print('pandas:', pandas.__version__); print('NumPy:', numpy.__version__)"
+```
+
+La ruta del intérprete correspondió al entorno virtual del proyecto. Las versiones informadas fueron:
+
+```text
+pandas: 3.1.0
+NumPy: 2.5.4
+```
+
+Las dos bibliotecas se importaron sin errores.
+
+## 6. Reconstrucción del entorno
+
+La carpeta `.venv` se reconstruye en cada equipo. Su exclusión del control de versiones debe indicarse mediante la entrada `.venv/` en el archivo `.gitignore`.
+
+Con Python 3.13 disponible, la preparación del entorno desde la raíz del proyecto se realiza mediante:
+
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip check
+```
+
+En el archivo de dependencias registrado, NumPy y pandas tienen versiones fijadas. Las entradas de ipykernel, JupyterLab y Notebook no incluyen una versión específica. El inventario del anexo identifica las versiones instaladas durante la preparación.
+
+Para conservar un archivo adicional con las versiones de los paquetes instalados puede ejecutarse:
+
+```powershell
+python -m pip freeze > requirements-lock.txt
+```
+
+La reconstrucción a partir de ese archivo, una vez generado y versionado, se realiza mediante:
+
+```powershell
+python -m pip install -r requirements-lock.txt
+```
+
+Estos comandos se incluyen como procedimiento de reproducción. La generación de `requirements-lock.txt` y la ejecución en un segundo equipo no se registran como verificaciones realizadas.
+
+## 7. Estado de la configuración
+
+La configuración base del entorno quedó preparada para ejecutar scripts Python desde la terminal del proyecto. Se comprobaron:
+
+- Python 3.13.17 y la ruta del intérprete dentro de `.venv`.
+- La creación y activación del entorno virtual.
+- La selección del intérprete del proyecto en Visual Studio Code.
+- La instalación de las dependencias.
+- La comprobación de dependencias mediante `pip check`.
+- La importación de pandas 3.1.0 y NumPy 2.5.4.
+
+La incorporación del dataset y la ejecución de `validar_dataset.py` corresponden a la siguiente etapa. La ejecución del notebook con el kernel del proyecto y la reproducción en otro equipo se comprobarán durante el desarrollo de los entregables.
+
+## Anexo. Inventario de dependencias instaladas
+
+El registro de instalación identificó 93 paquetes, incluidas las dependencias directas y auxiliares.
+
+
+| Paquete | Versión instalada |
+|---|---|
+| anyio | 4.16.0 |
+| argon2-cffi | 25.1.0 |
+| argon2-cffi-bindings | 26.2.0 |
+| arrow | 1.4.0 |
+| asttokens | 3.0.2 |
+| async-lru | 2.4.0 |
+| attrs | 26.1.0 |
+| babel | 2.18.0 |
+| beautifulsoup4 | 4.15.0 |
+| bleach | 6.4.0 |
+| certifi | 2026.10.23 |
+| cffi | 2.1.1 |
+| charset_normalizer | 3.5.2 |
+| colorama | 0.4.6 |
+| comm | 0.2.3 |
+| debugpy | 1.8.22 |
+| defusedxml | 0.7.1 |
+| executing | 2.3.0 |
+| fastjsonschema | 2.22.3 |
+| fqdn | 1.6.0 |
+| h11 | 0.16.0 |
+| httpcore | 1.0.9 |
+| httpx | 0.28.1 |
+| idna | 3.20 |
+| ipykernel | 7.4.0 |
+| ipython | 9.18.1 |
+| ipython-pygments-lexers | 1.1.1 |
+| isoduration | 20.11.0 |
+| jedi | 0.20.1 |
+| jinja2 | 3.1.6 |
+| json5 | 0.17.3 |
+| jsonpointer | 3.12 |
+| jsonschema | 4.26.0 |
+| jsonschema-specifications | 2025.9.1 |
+| jupyter-builder | 1.3.0 |
+| jupyter-client | 8.10.0 |
+| jupyter-core | 5.9.1 |
+| jupyter-events | 0.12.1 |
+| jupyter-lsp | 2.3.1 |
+| jupyter-server | 2.21.1 |
+| jupyter-server-terminals | 0.5.4 |
+| jupyterlab | 4.6.6 |
+| jupyterlab-pygments | 0.3.0 |
+| jupyterlab-server | 2.28.1 |
+| lark | 1.3.1 |
+| MarkupSafe | 3.0.4 |
+| matplotlib-inline | 0.2.2 |
+| mistune | 3.4.0 |
+| nbclient | 0.11.0 |
+| nbconvert | 7.17.2 |
+| nbformat | 5.11.1 |
+| nest-asyncio2 | 1.7.4 |
+| notebook | 7.6.5 |
+| notebook-shim | 0.2.4 |
+| numpy | 2.5.4 |
+| packaging | 26.3 |
+| pandas | 3.1.0 |
+| pandocfilters | 1.5.1 |
+| parso | 0.8.7 |
+| platformdirs | 4.14.7 |
+| prometheus-client | 0.26.0 |
+| prompt_toolkit | 3.0.53 |
+| psutil | 7.2.2 |
+| pure-eval | 0.2.4 |
+| pycparser | 3.12 |
+| pygments | 2.21.0 |
+| python-dateutil | 4.0.0 |
+| python-json-logger | 4.2.0 |
+| pywinpty | 3.1.2 |
+| pyyaml | 6.0.3 |
+| pyzmq | 27.3.0 |
+| referencing | 0.37.0 |
+| requests | 2.34.2 |
+| rfc3339-validator | 0.1.4 |
+| rfc3986-validator | 0.1.1 |
+| rfc3987-syntax | 1.1.0 |
+| rpds-py | 2026.9.1 |
+| send2trash | 2.2.0 |
+| six | 1.17.0 |
+| soupsieve | 4.1.2 |
+| stack_data | 0.6.3 |
+| terminado | 0.18.1 |
+| tinycss2 | 1.5.1 |
+| tornado | 6.6.1 |
+| traitlets | 5.16.1 |
+| typing_extensions | 4.16.0 |
+| tzdata | 2026.6 |
+| uri-template | 1.3.0 |
+| urllib3 | 2.8.0 |
+| wcwidth | 0.9.4 |
+| webcolors | 25.10.0 |
+| webencodings | 0.6.1 |
+| websocket-client | 1.9.2 |
 
 ## Referencias técnicas
 
-Python Software Foundation. Python 3.13.17.
-
-https://www.python.org/downloads/release/python-31317/
-
-Python Software Foundation. Python 3.13.18.
-
-https://www.python.org/downloads/release/python-31318/
-
-NumPy. Distribuciones de NumPy 2.5.4.
-
-https://pypi.org/project/numpy/2.5.4/
-
-pandas. Distribuciones de pandas 3.1.0.
-
-https://pypi.org/project/pandas/3.1.0/
-
-Python Software Foundation. Using Python on Windows.
-
-https://docs.python.org/3.13/using/windows.html
-
-The pandas development team. What’s new in pandas 2.0.0.
-
-https://pandas.pydata.org/docs/whatsnew/v2.0.0.html
-
-Project Jupyter. Paquetes de ipykernel, JupyterLab y Notebook.
-
-https://pypi.org/project/ipykernel/
-
-https://pypi.org/project/jupyterlab/
-
-https://pypi.org/project/notebook/
+- Python Software Foundation. *venv — Creation of virtual environments*. https://docs.python.org/3.13/library/venv.html
+- Python Software Foundation. *Using Python on Windows*. https://docs.python.org/3.13/using/windows.html
+- NumPy. *NumPy 2.5.4*. https://pypi.org/project/numpy/2.5.4/
+- pandas. *pandas 3.1.0*. https://pypi.org/project/pandas/3.1.0/
+- Project Jupyter. *ipykernel*. https://pypi.org/project/ipykernel/
+- Project Jupyter. *JupyterLab*. https://pypi.org/project/jupyterlab/
+- Project Jupyter. *Notebook*. https://pypi.org/project/notebook/
