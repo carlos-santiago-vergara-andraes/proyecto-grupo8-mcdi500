@@ -47,15 +47,18 @@ La versión de VS Code se consultará en Ayuda → Acerca de. Las versiones de l
 
 Se decidió preparar una instalación limpia y conservar una única versión de Python en el equipo para simplificar la selección del intérprete, la instalación de dependencias y la configuración del kernel de Jupyter.
 
-Se seleccionó Python 3.13.17 de 64 bits, dentro de la serie Python 3.13 utilizada en el ejemplo de ejecución de la guía docente. La selección de la versión de mantenimiento 3.13.17 corresponde a una decisión de configuración del proyecto.
+Se mantiene la serie Python 3.13, utilizada en el ejemplo de ejecución de la guía docente. La propuesta de pasar a Python 3.14 se revisó al comprobar que las dependencias fijadas también publican paquetes para Python 3.13 en Windows de 64 bits.
 
+Python 3.13.17 dispone de un instalador oficial de Windows de 64 bits. Python 3.13.18 es posterior e incorpora correcciones de seguridad; su página oficial indica que se distribuye únicamente como código fuente. Se registra Python 3.13.17 como candidato para la instalación mediante el ejecutable oficial y se deja constancia de que existe una versión de mantenimiento posterior.
+
+La versión finalmente instalada se registrará después de ejecutar el instalador y comprobar el intérprete.
 El script `validar_dataset.py` utiliza pandas para leer, perfilar y evaluar el conjunto de datos. También emplea `pd.to_datetime` con `format="mixed"`, disponible desde pandas 2.0. La comprobación del validador se realizará con las dependencias declaradas en el proyecto y un archivo de datos real.
 
 La compatibilidad del entorno completo se confirmará mediante la instalación de dependencias, sus importaciones y la ejecución del validador.
 
 ## Instalación prevista
 
-Se retirarán las instalaciones anteriores desde la administración de aplicaciones de Windows. Después se instalará Python 3.13.17 de 64 bits desde Python.org, con pip y el lanzador de Python habilitados.
+Se retirarán las instalaciones anteriores desde la administración de aplicaciones de Windows. Se prevé utilizar el instalador oficial de Python 3.13.17 de 64 bits, con pip y el lanzador de Python habilitados. La versión instalada se confirmará desde la consola.
 
 Tras la instalación se registrarán la fecha, la ruta del intérprete y las versiones obtenidas mediante los siguientes comandos.
 
@@ -93,9 +96,25 @@ Las versiones efectivamente instaladas se reflejarán también en `requirements.
 
 La ejecución del validador se documentará indicando si logró leer y evaluar el archivo, junto con los requisitos cumplidos y los avisos detectados. La evaluación del dataset y la comprobación de funcionamiento del entorno tendrán sus respectivos resultados.
 
+## Comprobación previa de disponibilidad y dependencias
+
+Se consultó el instalador oficial `python-3.13.17-amd64.exe`. El servidor respondió HTTP 200 y declaró un tamaño de 29.941.280 bytes.
+
+Se realizó una resolución simulada con pip para CPython 3.13, plataforma win_amd64 y paquetes binarios, usando las cinco dependencias del requirements.txt. La resolución finalizó con código de salida 0 y seleccionó los siguientes paquetes principales.
+
+| Paquete | Versión seleccionada en la simulación |
+|---|---|
+| ipykernel | 7.4.0 |
+| jupyterlab | 4.6.6 |
+| notebook | 7.6.5 |
+| numpy | 2.5.4 |
+| pandas | 3.1.0 |
+
+La simulación se realizó desde un entorno distinto al equipo Windows de desarrollo. La disponibilidad de paquetes y la resolución comprobadas respaldan la instalación propuesta. El conjunto final de dependencias, incluidas las específicas de Windows, se confirmará durante la instalación real. La ejecución de Jupyter, las importaciones y el validador siguen pendientes.
+
 ## Estado del registro
 
-La revisión inicial y la decisión de configuración están documentadas. La desinstalación de las versiones anteriores, la instalación de Python 3.13.17, la creación del entorno virtual y las comprobaciones del validador están pendientes de confirmación.
+La revisión inicial y la decisión de configuración están documentadas. La desinstalación de las versiones anteriores, la instalación de Python 3.13, la creación del entorno virtual y las comprobaciones del validador están pendientes de confirmación.
 
 Este documento se actualizará con los resultados de cada paso realizado.
 
@@ -103,7 +122,7 @@ Este documento se actualizará con los resultados de cada paso realizado.
 
 Este registro respalda el apartado de reproducibilidad técnica del informe. La siguiente redacción describe el estado actual del trabajo.
 
-Durante la preparación del entorno se identificaron instalaciones de Python 3.14 y 3.12 en el equipo. El intérprete activo correspondía a Python 3.14.7, con pip 26.2.1, NumPy 2.5.2 y pandas 3.0.5. Se decidió realizar una instalación limpia con Python 3.13.17 de 64 bits, siguiendo la serie utilizada en el material docente. Se utiliza Visual Studio Code como editor y se prevé configurar sus extensiones Python y Jupyter para trabajar con el entorno virtual del proyecto. El funcionamiento se comprobará mediante importaciones, la selección del kernel de Jupyter y la ejecución de `validar_dataset.py` sobre el conjunto de datos seleccionado. Los resultados de estas verificaciones se incorporarán al informe una vez completadas.
+Durante la preparación del entorno se identificaron instalaciones de Python 3.14 y 3.12 en el equipo. El intérprete activo correspondía a Python 3.14.7, con pip 26.2.1, NumPy 2.5.2 y pandas 3.0.5. Se mantiene la serie Python 3.13 y se verificó la disponibilidad del instalador oficial de Python 3.13.17 de 64 bits, junto con paquetes de NumPy 2.5.4 y pandas 3.1.0 para esa serie. Se registró que Python 3.13.18 es posterior y se publica como código fuente. Se utiliza Visual Studio Code como editor y se prevé configurar sus extensiones Python y Jupyter para trabajar con el entorno virtual del proyecto. El funcionamiento se comprobará mediante importaciones, la selección del kernel de Jupyter y la ejecución de `validar_dataset.py` sobre el conjunto de datos seleccionado. Los resultados de estas verificaciones se incorporarán al informe una vez completadas.
 
 Al cerrar la instalación, este párrafo se actualizará con las versiones confirmadas, las pruebas ejecutadas y sus resultados. Los campos pendientes conservarán ese estado hasta completar su comprobación.
 
@@ -113,6 +132,18 @@ Python Software Foundation. Python 3.13.17.
 
 https://www.python.org/downloads/release/python-31317/
 
+Python Software Foundation. Python 3.13.18.
+
+https://www.python.org/downloads/release/python-31318/
+
+NumPy. Distribuciones de NumPy 2.5.4.
+
+https://pypi.org/project/numpy/2.5.4/
+
+pandas. Distribuciones de pandas 3.1.0.
+
+https://pypi.org/project/pandas/3.1.0/
+
 Python Software Foundation. Using Python on Windows.
 
 https://docs.python.org/3.13/using/windows.html
@@ -120,3 +151,11 @@ https://docs.python.org/3.13/using/windows.html
 The pandas development team. What’s new in pandas 2.0.0.
 
 https://pandas.pydata.org/docs/whatsnew/v2.0.0.html
+
+Project Jupyter. Paquetes de ipykernel, JupyterLab y Notebook.
+
+https://pypi.org/project/ipykernel/
+
+https://pypi.org/project/jupyterlab/
+
+https://pypi.org/project/notebook/
