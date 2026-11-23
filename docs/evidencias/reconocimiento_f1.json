@@ -1,0 +1,1198 @@
+{
+  "fase": "F1",
+  "fecha_ejecucion_utc": "2026-11-23T04:51:02.988422+00:00",
+  "alcance": "Definición, entorno y reconocimiento inicial; sin limpieza ni imputación",
+  "entorno": [
+    {
+      "componente": "Python",
+      "valor": "3.13.17"
+    },
+    {
+      "componente": "Intérprete del kernel",
+      "valor": "c:\\Users\\devco\\Documents\\Magister\\PROGRAMACIÓN PARA LA CIENCIA -  MCDI500\\proyecto-grupo8-mcdi500\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "componente": "Plataforma",
+      "valor": "Windows-11-10.0.26300-SP0"
+    },
+    {
+      "componente": "Entorno virtual activo",
+      "valor": true
+    },
+    {
+      "componente": "Kernel en .venv del proyecto",
+      "valor": true
+    },
+    {
+      "componente": "Python de la serie 3.13",
+      "valor": true
+    },
+    {
+      "componente": "pip check correcto",
+      "valor": true
+    },
+    {
+      "componente": "Salida de pip check",
+      "valor": "No broken requirements found."
+    }
+  ],
+  "dependencias": [
+    {
+      "dependencia": "ipykernel",
+      "declaracion": "ipykernel==7.4.0",
+      "version_instalada": "7.4.0",
+      "importacion_correcta": true,
+      "version_fijada": true,
+      "cumple_declaracion": true,
+      "observacion": "Versión fijada"
+    },
+    {
+      "dependencia": "jupyterlab",
+      "declaracion": "jupyterlab==4.6.6",
+      "version_instalada": "4.6.6",
+      "importacion_correcta": true,
+      "version_fijada": true,
+      "cumple_declaracion": true,
+      "observacion": "Versión fijada"
+    },
+    {
+      "dependencia": "notebook",
+      "declaracion": "notebook==7.6.5",
+      "version_instalada": "7.6.5",
+      "importacion_correcta": true,
+      "version_fijada": true,
+      "cumple_declaracion": true,
+      "observacion": "Versión fijada"
+    },
+    {
+      "dependencia": "numpy",
+      "declaracion": "numpy==2.5.4",
+      "version_instalada": "2.5.4",
+      "importacion_correcta": true,
+      "version_fijada": true,
+      "cumple_declaracion": true,
+      "observacion": "Versión fijada"
+    },
+    {
+      "dependencia": "pandas",
+      "declaracion": "pandas==3.1.0",
+      "version_instalada": "3.1.0",
+      "importacion_correcta": true,
+      "version_fijada": true,
+      "cumple_declaracion": true,
+      "observacion": "Versión fijada"
+    }
+  ],
+  "git": {
+    "disponible": true,
+    "rama": "feature/f1-definicion-entorno",
+    "commit": "6cf6cd89e194303f92e172cf6a587bb0b1e0bd1c",
+    "cambios_sin_confirmar": true
+  },
+  "fuente": {
+    "ruta": "data\\raw\\listings.csv.gz",
+    "sha256": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a",
+    "coincide_referencia": true,
+    "archivo_sin_cambios": true,
+    "tabla_sin_cambios": true
+  },
+  "resumen": [
+    {
+      "indicador": "Filas",
+      "valor": 29753
+    },
+    {
+      "indicador": "Columnas",
+      "valor": 90
+    },
+    {
+      "indicador": "Filas duplicadas exactas",
+      "valor": 0
+    },
+    {
+      "indicador": "Identificadores id ausentes",
+      "valor": 0
+    },
+    {
+      "indicador": "Identificadores id repetidos",
+      "valor": 0
+    },
+    {
+      "indicador": "Columnas completamente vacías",
+      "valor": 14
+    },
+    {
+      "indicador": "Columnas con más de 60 % de faltantes",
+      "valor": 16
+    }
+  ],
+  "perfil_variables": [
+    {
+      "variable": "id",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 29753,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "trazabilidad",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "listing_url",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 29753,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "scrape_id",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 1,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "trazabilidad",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "last_scraped",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 3,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "contexto temporal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "source",
+      "tipo_leido": "str",
+      "n_faltantes": 27640,
+      "porcentaje_faltantes": 92.89819514,
+      "valores_distintos": 1,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "evaluar exclusión por faltantes",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "name",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 28257,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto libre",
+      "uso_propuesto": "contexto textual",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "description",
+      "tipo_leido": "str",
+      "n_faltantes": 107,
+      "porcentaje_faltantes": 0.3596276006,
+      "valores_distintos": 26257,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto libre",
+      "uso_propuesto": "contexto textual",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "neighborhood_overview",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "texto libre",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "picture_url",
+      "tipo_leido": "str",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 29200,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_id",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 14623,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "trazabilidad y agrupación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_url",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 14623,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_profile_id",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 14623,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "host_profile_url",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 14623,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "host_name",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 4058,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal de alta cardinalidad",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_since",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "hosts_time_as_user_years",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 18,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "hosts_time_as_user_months",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 12,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "hosts_time_as_host_years",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 16,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "hosts_time_as_host_months",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 12,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "host_location",
+      "tipo_leido": "str",
+      "n_faltantes": 6595,
+      "porcentaje_faltantes": 22.1658320169,
+      "valores_distintos": 695,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal de alta cardinalidad",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_about",
+      "tipo_leido": "str",
+      "n_faltantes": 12927,
+      "porcentaje_faltantes": 43.4477195577,
+      "valores_distintos": 6503,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto libre",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_response_time",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "ordinal conceptual",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_response_rate",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_acceptance_rate",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_is_superhost",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 2,
+      "n_numericos_finitos": null,
+      "rol_analitico": "binaria",
+      "uso_propuesto": "contexto del anfitrión",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_thumbnail_url",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_picture_url",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 13911,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "excluir del análisis",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_neighbourhood",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_listings_count",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 100,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto del anfitrión",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_total_listings_count",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "host_verifications",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "texto estructurado",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_has_profile_pic",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 2,
+      "n_numericos_finitos": null,
+      "rol_analitico": "binaria",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "host_identity_verified",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 2,
+      "n_numericos_finitos": null,
+      "rol_analitico": "binaria",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "neighbourhood",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "neighbourhood_cleansed",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 47,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "variable explicativa principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "neighbourhood_group_cleansed",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "latitude",
+      "tipo_leido": "float64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 15763,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "contexto espacial",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "longitude",
+      "tipo_leido": "float64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 17620,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "contexto espacial",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "property_type",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 57,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "room_type",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 4,
+      "n_numericos_finitos": null,
+      "rol_analitico": "nominal",
+      "uso_propuesto": "variable explicativa principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "accommodates",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 16,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "variable explicativa principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "bathrooms",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "cuantitativa de conteo fraccionado",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "bathrooms_text",
+      "tipo_leido": "str",
+      "n_faltantes": 22,
+      "porcentaje_faltantes": 0.0739421235,
+      "valores_distintos": 48,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto categórico",
+      "uso_propuesto": "evaluar derivación en F2",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "bedrooms",
+      "tipo_leido": "float64",
+      "n_faltantes": 13,
+      "porcentaje_faltantes": 0.043693073,
+      "valores_distintos": 20,
+      "n_numericos_finitos": 29740.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "beds",
+      "tipo_leido": "float64",
+      "n_faltantes": 522,
+      "porcentaje_faltantes": 1.7544449299,
+      "valores_distintos": 33,
+      "n_numericos_finitos": 29231.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "amenities",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 27794,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto estructurado",
+      "uso_propuesto": "contexto textual; posible derivación en F2",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "price",
+      "tipo_leido": "str",
+      "n_faltantes": 2119,
+      "porcentaje_faltantes": 7.1219708937,
+      "valores_distintos": 11775,
+      "n_numericos_finitos": null,
+      "rol_analitico": "continua",
+      "uso_propuesto": "variable de respuesta candidata",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "price_quote_checkin_date",
+      "tipo_leido": "str",
+      "n_faltantes": 1390,
+      "porcentaje_faltantes": 4.6717978019,
+      "valores_distintos": 325,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "control de comparabilidad temporal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "price_quote_checkout_date",
+      "tipo_leido": "str",
+      "n_faltantes": 1390,
+      "porcentaje_faltantes": 4.6717978019,
+      "valores_distintos": 355,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "control de duración de estancia",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "price_quote_total_price",
+      "tipo_leido": "float64",
+      "n_faltantes": 2120,
+      "porcentaje_faltantes": 7.1253318993,
+      "valores_distintos": 10072,
+      "n_numericos_finitos": 27633.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "validación de cotizaciones; fuera del análisis principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "price_quote_price_per_night",
+      "tipo_leido": "float64",
+      "n_faltantes": 2120,
+      "porcentaje_faltantes": 7.1253318993,
+      "valores_distintos": 11775,
+      "n_numericos_finitos": 27633.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "variable de respuesta candidata; evitar duplicarla con price",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "price_quote_raw",
+      "tipo_leido": "str",
+      "n_faltantes": 1390,
+      "porcentaje_faltantes": 4.6717978019,
+      "valores_distintos": 24755,
+      "n_numericos_finitos": null,
+      "rol_analitico": "texto estructurado",
+      "uso_propuesto": "verificación de moneda y condiciones",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "minimum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 72,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto de condiciones de reserva",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "maximum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 183,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto de condiciones de reserva",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "minimum_minimum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 72,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "maximum_minimum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 91,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "minimum_maximum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 181,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "maximum_maximum_nights",
+      "tipo_leido": "float64",
+      "n_faltantes": 1,
+      "porcentaje_faltantes": 0.0033610056,
+      "valores_distintos": 183,
+      "n_numericos_finitos": 29752.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "minimum_nights_avg_ntm",
+      "tipo_leido": "float64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 359,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "maximum_nights_avg_ntm",
+      "tipo_leido": "float64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 477,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calendar_updated",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "has_availability",
+      "tipo_leido": "str",
+      "n_faltantes": 176,
+      "porcentaje_faltantes": 0.5915369879,
+      "valores_distintos": 1,
+      "n_numericos_finitos": null,
+      "rol_analitico": "binaria conceptual",
+      "uso_propuesto": "fuera del alcance principal por ausencia de variación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "availability_30",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 31,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto; no equivale a ocupación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "availability_60",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 61,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto; no equivale a ocupación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "availability_90",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 91,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto; no equivale a ocupación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "availability_365",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 366,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto; no equivale a ocupación",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calendar_last_scraped",
+      "tipo_leido": "str",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 3,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "contexto temporal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "number_of_reviews",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 448,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "number_of_reviews_ltm",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 164,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "number_of_reviews_l30d",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 24,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "availability_eoy",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 99,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "number_of_reviews_ly",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 151,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "estimated_occupancy_l365d",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 98,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta estimada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "estimated_revenue_l365d",
+      "tipo_leido": "float64",
+      "n_faltantes": 2131,
+      "porcentaje_faltantes": 7.162302961,
+      "valores_distintos": 15920,
+      "n_numericos_finitos": 27622.0,
+      "rol_analitico": "continua estimada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "P"
+    },
+    {
+      "variable": "first_review",
+      "tipo_leido": "str",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 3944,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "contexto temporal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "last_review",
+      "tipo_leido": "str",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 1631,
+      "n_numericos_finitos": null,
+      "rol_analitico": "fecha",
+      "uso_propuesto": "contexto temporal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "review_scores_rating",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 141,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_accuracy",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 138,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_cleanliness",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 155,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_checkin",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 120,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_communication",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 129,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_location",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 125,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "review_scores_value",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 148,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua acotada",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "U"
+    },
+    {
+      "variable": "license",
+      "tipo_leido": "str",
+      "n_faltantes": 29242,
+      "porcentaje_faltantes": 98.2825261318,
+      "valores_distintos": 454,
+      "n_numericos_finitos": null,
+      "rol_analitico": "identificador",
+      "uso_propuesto": "evaluar exclusión por faltantes",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "instant_bookable",
+      "tipo_leido": "float64",
+      "n_faltantes": 29753,
+      "porcentaje_faltantes": 100.0,
+      "valores_distintos": 0,
+      "n_numericos_finitos": 0.0,
+      "rol_analitico": "binaria conceptual",
+      "uso_propuesto": "evaluar exclusión por ausencia total",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calculated_host_listings_count",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 68,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "contexto del anfitrión",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calculated_host_listings_count_entire_homes",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 70,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calculated_host_listings_count_private_rooms",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 25,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "calculated_host_listings_count_shared_rooms",
+      "tipo_leido": "int64",
+      "n_faltantes": 0,
+      "porcentaje_faltantes": 0.0,
+      "valores_distintos": 12,
+      "n_numericos_finitos": 29753.0,
+      "rol_analitico": "discreta",
+      "uso_propuesto": "fuera del alcance principal",
+      "base_definicion": "O"
+    },
+    {
+      "variable": "reviews_per_month",
+      "tipo_leido": "float64",
+      "n_faltantes": 3479,
+      "porcentaje_faltantes": 11.6929385272,
+      "valores_distintos": 951,
+      "n_numericos_finitos": 26274.0,
+      "rol_analitico": "continua",
+      "uso_propuesto": "caracterización complementaria",
+      "base_definicion": "O"
+    }
+  ],
+  "cotizaciones": {
+    "resumen": [
+      {
+        "indicador": "JSON ausente",
+        "valor": 1390.0
+      },
+      {
+        "indicador": "JSON no válido",
+        "valor": 0.0
+      },
+      {
+        "indicador": "Estructura inesperada",
+        "valor": 0.0
+      },
+      {
+        "indicador": "JSON con moneda informada",
+        "valor": 27760.0
+      },
+      {
+        "indicador": "JSON sin moneda informada",
+        "valor": 603.0
+      },
+      {
+        "indicador": "price ausente",
+        "valor": 2119.0
+      },
+      {
+        "indicador": "Precio numérico por noche ausente",
+        "valor": 2120.0
+      },
+      {
+        "indicador": "Estancias con duración calculable",
+        "valor": 28363.0
+      },
+      {
+        "indicador": "Estancias con duración no positiva",
+        "valor": 0.0
+      },
+      {
+        "indicador": "Duración mínima observada, noches",
+        "valor": 1.0
+      },
+      {
+        "indicador": "Duración máxima observada, noches",
+        "valor": 365.0
+      }
+    ],
+    "monedas": [
+      {
+        "moneda": "ARS",
+        "n_cotizaciones": 27760
+      }
+    ],
+    "fechas": [
+      {
+        "variable": "last_scraped",
+        "fecha_minima": "2026-09-25",
+        "fecha_maxima": "2026-09-27",
+        "n_ausentes_en_original": 0,
+        "n_no_interpretables_no_nulos": 0
+      },
+      {
+        "variable": "price_quote_checkin_date",
+        "fecha_minima": "2026-09-25",
+        "fecha_maxima": "2027-09-22",
+        "n_ausentes_en_original": 1390,
+        "n_no_interpretables_no_nulos": 0
+      },
+      {
+        "variable": "price_quote_checkout_date",
+        "fecha_minima": "2026-09-26",
+        "fecha_maxima": "2027-09-26",
+        "n_ausentes_en_original": 1390,
+        "n_no_interpretables_no_nulos": 0
+      }
+    ]
+  }
+}

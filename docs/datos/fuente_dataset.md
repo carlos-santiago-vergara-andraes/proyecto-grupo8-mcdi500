@@ -35,13 +35,15 @@ La huella SHA-256 calculada sobre la copia de referencia examinada es:
 c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a
 ```
 
-Esta huella permite comparar el archivo del repositorio con la copia revisada. La coincidencia del archivo local permanece pendiente de comprobación; no se infiere únicamente de su nombre o de sus dimensiones. Desde la raíz del proyecto en PowerShell:
+La ejecución guardada en `F1/F1_Definicion.ipynb` confirmó la coincidencia entre esta huella y el archivo local. Las comprobaciones finales confirmaron también que el archivo y la tabla en memoria se conservaron sin cambios durante el reconocimiento. La identidad no se deduce únicamente del nombre o las dimensiones del archivo.
+
+La comprobación puede repetirse desde la raíz del proyecto en PowerShell:
 
 ```powershell
 Get-FileHash .\data\raw\listings.csv.gz -Algorithm SHA256
 ```
 
-Si ambas huellas coinciden, se acredita identidad de contenido entre esas copias. Si difieren, se deberá revisar la versión antes de trasladar los resultados de esta ficha al archivo local. La fecha de descarga se mantiene como registro de procedencia y no como prueba criptográfica.
+La coincidencia acredita identidad de contenido entre las copias comprobadas. Ante una diferencia en futuras ejecuciones, se deberá revisar la versión antes de trasladar estos resultados a otro archivo. La fecha de descarga se mantiene como registro de procedencia y no como prueba criptográfica.
 
 ## Validación inicial
 

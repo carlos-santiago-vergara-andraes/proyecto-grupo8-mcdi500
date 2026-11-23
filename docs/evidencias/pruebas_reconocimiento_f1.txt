@@ -1,0 +1,13 @@
+test_archivo_ausente_o_sin_filas (test_reconocimiento.ReconocimientoTests.test_archivo_ausente_o_sin_filas) ... ok
+test_columnas_requeridas_y_evidencia_json (test_reconocimiento.ReconocimientoTests.test_columnas_requeridas_y_evidencia_json) ... ok
+test_cotizaciones_incluye_json_invalido_y_fechas_incoherentes (test_reconocimiento.ReconocimientoTests.test_cotizaciones_incluye_json_invalido_y_fechas_incoherentes) ... ok
+test_diccionario_distinto_o_duplicado_se_rechaza (test_reconocimiento.ReconocimientoTests.test_diccionario_distinto_o_duplicado_se_rechaza) ... ok
+test_lectura_gzip_conserva_archivo_y_valores (test_reconocimiento.ReconocimientoTests.test_lectura_gzip_conserva_archivo_y_valores) ... ok
+test_perfil_cubre_nulos_constantes_e_infinito_sin_mutar (test_reconocimiento.ReconocimientoTests.test_perfil_cubre_nulos_constantes_e_infinito_sin_mutar) ... ok
+test_raiz_unicode_registra_rama_commit_y_cambios (test_trazabilidad_git.TrazabilidadGitTests.test_raiz_unicode_registra_rama_commit_y_cambios) ... ok
+test_subcarpeta_no_se_confunde_con_raiz (test_trazabilidad_git.TrazabilidadGitTests.test_subcarpeta_no_se_confunde_con_raiz) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.206s
+
+OK

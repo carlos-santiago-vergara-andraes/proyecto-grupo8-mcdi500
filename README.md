@@ -45,7 +45,7 @@ Los objetivos orientan las próximas actividades; su formulación no implica que
 - [Descarga del archivo original](https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz).
 - [Fuente y condiciones de uso](https://insideairbnb.com/get-the-data/).
 
-El archivo original se conserva comprimido y sin modificaciones en `data/raw/`. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye una huella SHA-256 de referencia, pendiente de cotejo con el archivo local.
+El archivo original se conserva comprimido y sin modificaciones en `data/raw/`. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye la huella SHA-256 cotejada con el archivo local durante la ejecución de F1.
 
 ## Validación inicial del dataset
 
@@ -78,6 +78,7 @@ La clasificación automática se contrastó con el significado de las variables 
 | `F1/` | Definición del problema, entorno y reconocimiento inicial del dataset. |
 | `F2/` | Obtención, exploración, limpieza, transformación y validación de datos. |
 | `src/` | Funciones Python reutilizables. |
+| `tests/` | Pruebas de lectura, diagnóstico y conservación de los datos. |
 | `data/raw/` | Datos originales sin modificaciones. |
 | `data/processed/` | Resultados generados durante el preprocesamiento. |
 | `docs/entorno/` | Instalación, configuración y reproducción del entorno. |
@@ -92,6 +93,8 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 ## Documentación disponible
 
 - [Problema, pregunta, objetivos y alcance](F1/definicion_problema.md).
+- [Notebook F1](F1/F1_Definicion.ipynb): ejecutado en la `.venv` del proyecto, con reconocimiento del dataset y trazabilidad de Git verificados.
+- [Instrucciones de ejecución de F1](docs/entorno/ejecucion_f1.md).
 - [Creación del repositorio](docs/repositorio/creacion_repositorio.md).
 - [Configuración del entorno](docs/entorno/instalacion_entorno.md).
 - [Validación inicial del dataset](docs/datos/validacion_dataset.md).
@@ -99,7 +102,7 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 - [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
 - [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
-Los enlaces a los notebooks ejecutados, el mapa vigente y el informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
+Los enlaces al notebook F2, al mapa vigente y al informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
 
 ## Entorno de trabajo
 
@@ -121,11 +124,47 @@ python --version
 python -c "import sys; print(sys.executable)"
 ```
 
-En los notebooks se seleccionará el kernel asociado a la `.venv` del proyecto. La verificación desde el propio kernel, la fijación completa de las versiones utilizadas y la ejecución desde un clon limpio se documentarán durante el cierre de F1 y F2.
+El notebook F1 verificó el kernel de la `.venv` del proyecto, Python 3.13.17 y las importaciones de las cinco dependencias directas. `pip check` finalizó sin incompatibilidades. Las versiones observadas se fijaron en `requirements.txt`: ipykernel 7.4.0, JupyterLab 4.6.6, Notebook 7.6.5, NumPy 2.5.4 y pandas 3.1.0. El inventario de dependencias transitivas y la reproducción desde un clon limpio se completarán durante el cierre técnico.
+
+## Ejecución del notebook F1
+
+1. Abrir `F1/F1_Definicion.ipynb` en VS Code.
+2. Si VS Code solicita **Install/Enable suggested extensions Python + Jupyter**, completar la instalación o habilitación y recargar el editor si se solicita.
+3. Seleccionar **Select Kernel → Python Environments → `.venv (3.13.17)`**, con ruta `.venv\Scripts\python.exe`, marcada como **Recommended** en el selector revisado.
+4. Pulsar **Ctrl + Shift + P**, buscar y seleccionar **Jupyter: Restart Kernel and Run All Cells** y confirmar el reinicio si se solicita. Esperar la ejecución de todas las celdas.
+5. Comprobar las salidas del entorno, la huella del archivo, el perfil de variables y la referencia de Git.
+6. Guardar el notebook con **Ctrl + S**, conservando sus salidas, y revisar `docs/evidencias/reconocimiento_f1.json`, generado al completar las comprobaciones.
+
+El notebook utiliza `src/reconocimiento.py` para verificar el entorno, leer y reconocer los datos sin limpiarlos ni transformarlos. Su ejecución se detiene si se utiliza otro entorno, no se cumplen las dependencias fijadas o el archivo difiere de la copia de referencia. La selección, imputación y transformación de una base analítica corresponden a F2.
+
+Para conservar las versiones efectivamente instaladas, después de verificar el entorno:
+
+```powershell
+python -m pip freeze | Set-Content -Encoding UTF8 requirements.lock.txt
+```
+
+El notebook guardado registró la generación de `docs/evidencias/reconocimiento_f1.json` en el entorno del proyecto. La consulta de Git ya identifica la rama y el commit; al guardar la ejecución actualizada se revisará que esa referencia quede conservada también en la evidencia generada al final. El inventario completo de dependencias transitivas permanece pendiente de generación.
+
+La suite incluye ocho pruebas: seis de lectura, diagnóstico y conservación de datos, y dos de trazabilidad de Git mediante respuestas simuladas. Cubren archivos comprimidos, faltantes, infinitos, diccionarios incoherentes, JSON no válido, fechas inconsistentes, rutas Unicode y detección de subcarpetas. Se ejecutan desde la raíz, con la `.venv` activa:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+La suite completa finalizó localmente con **8 pruebas en 0,206 segundos y resultado `OK`**. La salida se conserva en [la evidencia de pruebas](docs/evidencias/pruebas_reconocimiento_f1.txt). El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
 
 ## Control de versiones
 
 El desarrollo actual se realiza en la rama `feature/f1-definicion-entorno`. Los cambios se registran mediante commits específicos que describen el trabajo realizado.
+
+La consulta de trazabilidad realizada desde el notebook registró:
+
+- Repositorio disponible: `True`.
+- Rama: `feature/f1-definicion-entorno`.
+- Commit de referencia: `6cf6cd89e194303f92e172cf6a587bb0b1e0bd1c`.
+- Cambios sin confirmar durante la consulta: `True`.
+
+El último indicador describe el estado de los archivos de trabajo en ese momento. El commit que incorpore el notebook, sus salidas y la documentación actualizados será posterior a la referencia consultada. Esta consulta no acredita un push ni la integración a `main`.
 
 Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Request. F2 se desarrollará posteriormente en su propia rama. La versión evaluable del proyecto deberá quedar integrada en `main` antes de la entrega.
 
@@ -141,12 +180,19 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 - Ejecución de la validación inicial y generación de su informe.
 - Registro de procedencia y fecha real de descarga del dataset.
 - Elaboración del diccionario de las 90 variables y revisión de sus roles analíticos.
-- Definición del problema, la pregunta, los objetivos y el alcance del análisis.
+- Definición del problema, la pregunta, los objetivos, el alcance, los supuestos y las restricciones del análisis.
+- Preparación del notebook F1 y de funciones reutilizables para el reconocimiento inicial.
+- Ejecución local satisfactoria de las ocho pruebas de reconocimiento y trazabilidad de F1.
+- Identificación de la `.venv` con Python 3.13.17 en el selector de kernel de VS Code.
+- Ejecución y guardado del notebook F1 sin errores, con verificación efectiva del kernel y las versiones.
+- Coincidencia de la huella del archivo y comprobación de conservación del dataset.
+- Fijación de las cinco dependencias directas según las versiones verificadas.
+- Verificación de Git desde el notebook, con identificación de la rama y el commit de referencia.
 
 ### Pendientes de F1
 
-- Cotejar la huella SHA-256 del archivo local con la copia de referencia documentada.
-- Completar el notebook F1 y ejecutarlo desde un kernel reiniciado.
+- Guardar el notebook actualizado y comprobar que conserva las salidas completas y la numeración desde 1 tras reiniciar el kernel.
+- Revisar la evidencia generada y conservar el inventario completo de dependencias.
 - Revisar el mapa conceptual y su correspondencia con el proyecto.
 
 ### Continuidad hacia F2 y la entrega sumativa

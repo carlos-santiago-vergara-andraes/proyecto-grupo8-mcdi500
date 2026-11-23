@@ -63,6 +63,17 @@ Se utiliza Buenos Aires como ámbito específico por la disponibilidad de un arc
 
 Las variables adicionales de cotización no están definidas en la versión 4.3 del diccionario oficial consultado. Su interpretación operativa se documenta como provisional y se contrastará con el JSON de cada registro antes de utilizarlas en la base analítica.
 
+## Supuestos de interpretación
+
+- Un `id` identifica un anuncio dentro del archivo; su ausencia o repetición se comprobará antes de usarlo para trazar registros.
+- La moneda ARS se reconocerá mediante `quote.currency`, sin deducirla únicamente del símbolo monetario. Los importes sin moneda comprobable no se equipararán automáticamente con los demás.
+- Las fechas de entrada y salida describen la estancia solicitada para una cotización. No acreditan que esa estancia se haya reservado o realizado.
+- Las categorías de barrio y tipo de alojamiento se interpretan según la clasificación de la fuente; su significado y cobertura se revisarán antes de comparar grupos.
+- La falta de información no representa un cero. Tampoco se presupone que los anuncios con precio informado tengan la misma composición que los anuncios sin precio.
+- Las comparaciones describirán anuncios observados en condiciones documentadas. No se presupone representatividad del mercado ni independencia entre anuncios del mismo anfitrión.
+
+Las comprobaciones que contradigan estos supuestos se cuantificarán y darán lugar a reglas o limitaciones explícitas, sin modificar silenciosamente la interpretación del estudio.
+
 ## Plan de análisis
 
 ### Reconocimiento inicial en F1
@@ -106,9 +117,13 @@ El mapa conceptual representará la relación entre problema, datos, herramienta
 
 Los cambios se registrarán mediante commits específicos en la rama de la fase y se integrarán a `main` mediante Pull Request. El repositorio y el informe mantendrán una distinción explícita entre decisiones planificadas y procedimientos ejecutados.
 
-## Limitaciones previstas
+## Restricciones
 
 La fuente puede presentar omisiones, anuncios desactualizados y diferencias entre las condiciones cotizadas. La extracción es observacional y no corresponde a una muestra probabilística del mercado. Los faltantes y las reglas de selección pueden modificar la composición de los grupos. Además, las ubicaciones son aproximadas y los datos de disponibilidad no distinguen todas las causas de bloqueo del calendario.
+
+La disponibilidad de una sola extracción limita el análisis de cambios históricos y estacionalidad. Las variables de cotización adicionales requieren validación de su contenido porque no están cubiertas por la versión del diccionario oficial consultada. La reconstrucción del entorno depende de la disponibilidad de las versiones declaradas y de la verificación del kernel empleado.
+
+El tiempo disponible para esta entrega limita la incorporación y validación de fuentes adicionales. El trabajo se organiza con las herramientas del curso y se concentra en el archivo seleccionado. Estas condiciones se distinguen de las decisiones de alcance: ciudad, segmentos de comparación y tipo de análisis.
 
 Las estimaciones de ocupación e ingresos del proveedor quedan fuera del análisis principal. Tampoco se realizarán predicciones de rentabilidad ni recomendaciones automáticas de tarifas. Los resultados comunicarán diferencias descriptivas junto con su cobertura y sus limitaciones.
 
