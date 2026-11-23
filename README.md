@@ -6,13 +6,28 @@ Proyecto en desarrollo para la asignatura **Programación para la Ciencia de Dat
 
 - Carlos Vergara Andraes (@carlos-santiago-vergara-andraes).
 
-## Problema y pregunta preliminar de análisis
+## Problema y pregunta de análisis
 
-El proyecto propone estudiar las diferencias en los precios anunciados de alojamientos de Airbnb en Buenos Aires, considerando su ubicación, tipo y capacidad. El análisis busca aportar información descriptiva para apoyar la comparación de tarifas entre alojamientos similares.
+El proyecto estudiará las diferencias en los precios cotizados de alojamientos de Airbnb en Buenos Aires, considerando su ubicación, tipo y capacidad. El análisis busca aportar referencias descriptivas para comparar tarifas de oferta entre alojamientos con características y condiciones de estancia similares.
 
-**Pregunta preliminar:** ¿Cómo varía el precio anunciado por noche según el barrio, el tipo de alojamiento y la capacidad en Buenos Aires?
+**Pregunta:** ¿Cómo varía el precio cotizado por noche en ARS según el barrio, el tipo de alojamiento y la capacidad de los anuncios de Airbnb de Buenos Aires, considerando la fecha y la duración de la estancia cotizada?
 
-El alcance será descriptivo. La formulación final de los objetivos se completará después de revisar el significado y la pertinencia de las variables en el diccionario de datos.
+El alcance será descriptivo y observacional. Las cotizaciones corresponden a distintas fechas y duraciones de estancia; las comparaciones se delimitarán según la cobertura de condiciones compatibles. Los resultados no acreditarán tarifas efectivamente pagadas, rentabilidad ni relaciones causales.
+
+[Consultar la definición del problema y el plan de análisis](F1/definicion_problema.md).
+
+## Objetivos
+
+**Objetivo general:** caracterizar las diferencias del precio cotizado por noche en ARS entre barrios, tipos de alojamiento y capacidades de los anuncios de Airbnb de Buenos Aires, mediante un análisis descriptivo reproducible que considere la fecha y la duración de las estancias cotizadas.
+
+Los objetivos específicos son:
+
+1. Evaluar la calidad y la cobertura de las variables necesarias, verificando identificadores, faltantes, formatos, moneda y coherencia de las cotizaciones.
+2. Preparar una base analítica trazable con reglas justificadas y efectos documentados sobre los anuncios y los grupos.
+3. Describir la distribución del precio por barrio, tipo y capacidad mediante tamaños de grupo, mediana, cuartiles y gráficos.
+4. Evaluar la estabilidad de las diferencias al considerar condiciones de estancia comparables y decisiones de preprocesamiento, comunicando cobertura y limitaciones.
+
+Los objetivos orientan las próximas actividades; su formulación no implica que el preprocesamiento o las comparaciones ya estén ejecutados.
 
 ## Dataset
 
@@ -30,7 +45,7 @@ El alcance será descriptivo. La formulación final de los objetivos se completa
 - [Descarga del archivo original](https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz).
 - [Fuente y condiciones de uso](https://insideairbnb.com/get-the-data/).
 
-El archivo original se conserva comprimido y sin modificaciones en `data/raw/`. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La fecha efectiva de descarga y la huella de integridad del archivo se incorporarán a la documentación de procedencia.
+El archivo original se conserva comprimido y sin modificaciones en `data/raw/`. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye una huella SHA-256 de referencia, pendiente de cotejo con el archivo local.
 
 ## Validación inicial del dataset
 
@@ -52,7 +67,7 @@ La validación registró:
 
 El resultado corresponde a las **90 columnas originales**. La selección de variables y el tratamiento de los faltantes se justificarán en F2, conservando la fuente original.
 
-La clasificación automática se contrastará con el significado de cada variable. Por ejemplo, `host_id` y `host_profile_id` son identificadores, aunque el validador los clasifique como variables continuas. El diccionario de datos documentará estas diferencias. El cumplimiento del script constituye una comprobación inicial y se complementará con la revisión de los requisitos académicos de la actividad.
+La clasificación automática se contrastó con el significado de las variables en el diccionario de datos. Por ejemplo, `host_id` y `host_profile_id` son identificadores, aunque el validador los clasifique como variables continuas. El diccionario de datos documenta estas diferencias y distingue los campos con definición provisional. El cumplimiento del script constituye una comprobación inicial y se complementará con la revisión de los requisitos académicos de la actividad.
 
 [Consultar el informe de validación](docs/datos/validacion_dataset.md).
 
@@ -76,11 +91,15 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 
 ## Documentación disponible
 
+- [Problema, pregunta, objetivos y alcance](F1/definicion_problema.md).
 - [Creación del repositorio](docs/repositorio/creacion_repositorio.md).
 - [Configuración del entorno](docs/entorno/instalacion_entorno.md).
 - [Validación inicial del dataset](docs/datos/validacion_dataset.md).
+- [Ficha de procedencia](docs/datos/fuente_dataset.md).
+- [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
+- [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
-Los enlaces al diccionario, los notebooks ejecutados, el mapa vigente y el informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
+Los enlaces a los notebooks ejecutados, el mapa vigente y el informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
 
 ## Entorno de trabajo
 
@@ -120,12 +139,13 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 - Organización de las carpetas de documentación.
 - Incorporación del dataset original al repositorio.
 - Ejecución de la validación inicial y generación de su informe.
+- Registro de procedencia y fecha real de descarga del dataset.
+- Elaboración del diccionario de las 90 variables y revisión de sus roles analíticos.
+- Definición del problema, la pregunta, los objetivos y el alcance del análisis.
 
 ### Pendientes de F1
 
-- Completar la documentación de procedencia del dataset.
-- Elaborar el diccionario de variables y contrastar los roles analíticos.
-- Definir los objetivos analíticos y cerrar el alcance del estudio.
+- Cotejar la huella SHA-256 del archivo local con la copia de referencia documentada.
 - Completar el notebook F1 y ejecutarlo desde un kernel reiniciado.
 - Revisar el mapa conceptual y su correspondencia con el proyecto.
 
