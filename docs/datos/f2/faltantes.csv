@@ -1,0 +1,16 @@
+variable,tipo_original,n_faltantes,porcentaje_faltantes,n_distintos
+id,int64,0,0.0,29753
+host_id,int64,0,0.0,14623
+last_scraped,str,0,0.0,3
+neighbourhood_cleansed,str,0,0.0,47
+room_type,str,0,0.0,4
+accommodates,int64,0,0.0,16
+price,str,2119,7.121970893691393,11775
+price_quote_price_per_night,float64,2120,7.125331899304271,11775
+price_quote_total_price,float64,2120,7.125331899304271,10072
+price_quote_checkin_date,str,1390,4.671797801902329,325
+price_quote_checkout_date,str,1390,4.671797801902329,355
+price_quote_raw,str,1390,4.671797801902329,24755
+bedrooms,float64,13,0.043693072967431856,20
+beds,float64,522,1.754444929923033,33
+review_scores_rating,float64,3479,11.69293852720734,141

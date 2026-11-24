@@ -73,7 +73,7 @@ if ($huellaObtenidaDataset -ne $huellaEsperadaDataset) { throw "La huella del da
 
 Si el archivo ya está disponible, se comprueba su huella sin volver a descargarlo ni reemplazarlo. El [procedimiento de obtención](docs/datos/obtencion_dataset.md) desarrolla la conservación local, la verificación y los criterios de distribución.
 
-Se verificaron la exclusión de Git, la conservación del archivo local y la retirada de `data/raw/` del historial filtrado. Al publicar la limpieza se verificó la concordancia de las ramas con la copia filtrada: `539f48bee8e38d5e2880deee03e577e64b0fa5d1` para F1 y `1bcf2be00feb2596e4e3e6d65983feb409beb8c6` para `main`. El [registro del retiro histórico](docs/repositorio/retiro_dataset_historial.md) documenta el respaldo, el método y las verificaciones. Posteriormente se registró y envió la reproducción desde un clon limpio en `f368242`. La integración mediante Pull Request permanece pendiente.
+Se verificaron la exclusión de Git, la conservación del archivo local y la retirada de `data/raw/` del historial filtrado. Al publicar la limpieza se verificó la concordancia de las ramas con la copia filtrada: `539f48bee8e38d5e2880deee03e577e64b0fa5d1` para F1 y `1bcf2be00feb2596e4e3e6d65983feb409beb8c6` para `main`. El [registro del retiro histórico](docs/repositorio/retiro_dataset_historial.md) documenta el respaldo, el método y las verificaciones. Posteriormente se registró y envió la reproducción desde un clon limpio en `f368242`. F1 se integró posteriormente a `main` mediante el [Pull Request #1](https://github.com/carlos-santiago-vergara-andraes/proyecto-grupo8-mcdi500/pull/1).
 
 ## Validación inicial del dataset
 
@@ -108,7 +108,7 @@ La clasificación automática se contrastó con el significado de las variables 
 | `src/` | Funciones Python reutilizables. |
 | `tests/` | Pruebas de lectura, diagnóstico y conservación de los datos. |
 | `data/raw/` | Datos originales locales, inmutables y excluidos de Git. |
-| `data/processed/` | Resultados generados durante el preprocesamiento. |
+| `data/processed/` | Resultados locales del preprocesamiento, excluidos de Git. |
 | `docs/entorno/` | Instalación, configuración y reproducción del entorno. |
 | `docs/repositorio/` | Creación y organización del repositorio. |
 | `docs/datos/` | Documentación de fuente, diccionario de variables e informes de validación. |
@@ -136,7 +136,11 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 - [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
 - [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
-Los enlaces al notebook F2 y al informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
+- [Notebook F2](F2/F2_Preprocesamiento.ipynb): preparado; pendiente de ejecución y guardado en la `.venv` local.
+- [Instrucciones y salidas de F2](docs/entorno/ejecucion_f2.md).
+- [Decisiones previstas de F2](F2/decisiones_preprocesamiento.md).
+
+El registro técnico de resultados se generará al ejecutar F2 en `docs/datos/preprocesamiento_f2.md`. El informe sumativo institucional sigue pendiente.
 
 ## Entorno de trabajo
 
@@ -189,7 +193,7 @@ La suite completa finalizó en el clon nuevo con **8 pruebas en 0,112 segundos y
 
 ## Control de versiones
 
-El desarrollo actual se realiza en la rama `feature/f1-definicion-entorno`. Los cambios se registran mediante commits específicos que describen el trabajo realizado.
+F1 se desarrolló en `feature/f1-definicion-entorno` y se integró a `main` mediante el Pull Request #1. F2 se desarrolla en `feature/f2-preprocesamiento`. Los cambios se registran mediante commits descriptivos y cada fase se integra a `main` antes de la entrega.
 
 La consulta de trazabilidad realizada desde el notebook registró:
 
@@ -198,50 +202,27 @@ La consulta de trazabilidad realizada desde el notebook registró:
 - Commit de referencia: `539f48bee8e38d5e2880deee03e577e64b0fa5d1`.
 - Cambios sin confirmar durante la consulta en el clon nuevo: `False`.
 
-El último indicador describe el estado de los archivos de trabajo en ese momento. Después de guardar las nuevas salidas se registraron el notebook y el JSON de reconocimiento en el commit `f368242`, con mensaje `test(f1): registrar reproducción desde clon limpio`. El push confirmó su envío a la rama F1. La integración a `main` permanece pendiente.
+El último indicador describe el estado de los archivos de trabajo en ese momento. Después de guardar las nuevas salidas se registraron el notebook y el JSON de reconocimiento en el commit `f368242`, con mensaje `test(f1): registrar reproducción desde clon limpio`. El push confirmó su envío a la rama F1. La integración de F1 a `main` se completó mediante el Pull Request #1.
 
 La reescritura histórica cambió los identificadores de los commits afectados. Las referencias previas descritas en este README corresponden a registros anteriores a la limpieza; su correspondencia con las nuevas referencias se documenta en el registro del retiro histórico.
 
-Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Request. F2 se desarrollará posteriormente en su propia rama. La versión evaluable del proyecto deberá quedar integrada en `main` antes de la entrega.
+F1 ya está integrada en `main`. La integración de F2 se realizará después de ejecutar y verificar su notebook. La versión evaluable de todas las fases deberá quedar integrada en `main` antes de la entrega.
+
+## Ejecución del notebook F2
+
+1. Mantener el archivo original en `data/raw/listings.csv.gz` y excluir también `/data/processed/` en `.gitignore`.
+2. Abrir `F2/F2_Preprocesamiento.ipynb` y seleccionar la misma `.venv` verificada en F1.
+3. Ejecutar **Jupyter: Restart Kernel and Run All Cells** y esperar la finalización completa.
+4. Revisar las salidas de precios, faltantes, cohortes, validación y pruebas; guardar con **Ctrl + S**.
+5. Consultar `docs/datos/preprocesamiento_f2.md`, `docs/datos/f2/`, `docs/evidencias/preprocesamiento_f2.json` y `docs/evidencias/pruebas_preprocesamiento_f2.txt`.
+
+Las salidas por anuncio se conservan localmente en `data/processed/`; Git conserva el notebook, el código y las evidencias agregadas. No se publica el original ni se agregan archivos de `data/raw/` o `data/processed/` al commit. Las dependencias de F1 son suficientes.
 
 ## Estado del proyecto
 
-**Fase 1 en desarrollo.**
+- **F1 técnica integrada a `main` mediante PR #1:** notebook ejecutado, ocho pruebas aprobadas, fuente fuera de Git e historial limpiado; mapa conceptual en Markdown y PDF.
+- **F2 ejecutada y verificada localmente:** notebook ejecutado en la `.venv` del proyecto con Python 3.13.17, 18 pruebas aprobadas y 15 controles de validación satisfactorios. Se generaron una base elegible de 27.633 anuncios, una cohorte principal de 2.080 y una de sensibilidad de 5.039. Las decisiones y evidencias quedaron documentadas; los datos procesados se conservan localmente, fuera de Git.
+- **Informe sumativo pendiente:** incorporar resultados verificados, tabla de faltantes, relación objetivos–evidencias, plantilla institucional y referencias APA 7.
+- **F3 y F4 pendientes.**
 
-### Avances realizados
-
-- Exclusión del dataset original de Git y limpieza histórica de `data/raw/`, con respaldo y referencias remotas verificadas.
-- Configuración inicial del entorno virtual de Python.
-- Organización de las carpetas de documentación.
-- Obtención local y reconocimiento del dataset original.
-- Ejecución de la validación inicial y generación de su informe.
-- Registro de procedencia y fecha real de descarga del dataset.
-- Elaboración del diccionario de las 90 variables y revisión de sus roles analíticos.
-- Definición del problema, la pregunta, los objetivos, el alcance, los supuestos y las restricciones del análisis.
-- Preparación del notebook F1 y de funciones reutilizables para el reconocimiento inicial.
-- Ejecución local satisfactoria de las ocho pruebas de reconocimiento y trazabilidad de F1.
-- Identificación de la `.venv` con Python 3.13.17 en el selector de kernel de VS Code.
-- Ejecución y guardado del notebook F1 sin errores, con verificación efectiva del kernel y las versiones.
-- Coincidencia de la huella del archivo y comprobación de conservación del dataset.
-- Fijación de las cinco dependencias directas según las versiones verificadas.
-- Verificación de Git desde el notebook, con identificación de la rama y el commit de referencia.
-- Reconstrucción de la `.venv` desde `requirements.lock.txt` en un clon nuevo.
-- Reproducción de F1 y ocho pruebas aprobadas en ese entorno, registrada y enviada en `f368242`.
-- Preparación del mapa conceptual en Markdown y PDF y de su vinculación con las evidencias de F1.
-
-### Pendientes de F1
-
-- Incorporar el mapa, su vinculación y los registros de cierre mediante un commit.
-- Revisar el Pull Request de F1 e integrarlo a `main` antes de la entrega.
-
-### Continuidad hacia F2 y la entrega sumativa
-
-- Implementar el preprocesamiento con decisiones justificadas y funciones reutilizables.
-- Ejecutar y documentar el notebook F2, conservando sus salidas y verificaciones.
-- Generar los archivos procesados y comprobar su lectura y consistencia.
-- Redactar el informe técnico con las evidencias obtenidas y los apartados exigidos.
-- Verificar la reproducción de F2 e integrar sus cambios a `main` mediante Pull Request.
-
-## Referencia del dataset
-
-Inside Airbnb. (2026). *Buenos Aires: Detailed listings* [Conjunto de datos; recurso identificado como 2026-09-23]. https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz
+La guía de F2 documenta las salidas esperadas y las comprobaciones previas al commit. El registro de referencia distingue el entorno de preparación del kernel local; no constituye evidencia de ejecución en el equipo Windows.

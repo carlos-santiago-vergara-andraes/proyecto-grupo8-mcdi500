@@ -1,0 +1,16 @@
+control,cumple
+base_no_vacia,True
+id_unico_y_presente,True
+precio_finito_positivo,True
+moneda_ARS,True
+fechas_y_duracion_coherentes,True
+capacidad_entera_positiva,True
+grupos_principales_presentes,True
+tipos_reconocidos,True
+log_precio_reversible,True
+razon_por_plaza_coherente,True
+sin_nombres_URL_texto_libre_coordenadas,True
+archivo_original_inmutable,True
+tabla_original_inmutable,True
+tres_CSV_releidos_y_cotejados,True
+indicadores_tipo_releidos_y_cotejados,True
