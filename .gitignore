@@ -24,3 +24,5 @@ desktop.ini
 
 # Data raw
 /data/raw/
+
+/data/processed/

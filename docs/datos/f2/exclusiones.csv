@@ -1,0 +1,10 @@
+regla,n_con_motivo_en_fuente,n_excluidos_en_este_paso,n_restantes
+id_ausente,0,0,29753
+moneda_no_ARS,1993,1993,27760
+precio_no_positivo_o_no_finito,2120,127,27633
+precio_no_coincide_JSON,2120,0,27633
+fechas_no_validas,1390,0,27633
+fechas_no_coinciden_JSON,1390,0,27633
+capacidad_no_entera_positiva,0,0,27633
+barrio_ausente,0,0,27633
+tipo_no_reconocido,0,0,27633

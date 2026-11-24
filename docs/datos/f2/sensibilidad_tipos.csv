@@ -1,0 +1,5 @@
+tipo_alojamiento,n_exacta,mediana_ARS_exacta,q1_ARS_exacta,q3_ARS_exacta,grupo_menor_30_exacta,n_mismo_mes,mediana_ARS_mismo_mes,q1_ARS_mismo_mes,q3_ARS_mismo_mes,grupo_menor_30_mismo_mes
+Entire home/apt,1692,120800.0,98302.9475,166640.84999999998,False,3981,125000.0,99110.0,175814.0,False
+Hotel room,40,253784.0,199257.0,298822.25,False,105,253784.0,195171.0,316465.0,False
+Private room,329,69000.0,47000.0,107018.0,False,856,70326.0,47355.195,115516.5575,False
+Shared room,19,35775.0,24431.0,42654.0,True,97,32106.0,26651.39,50451.0,False

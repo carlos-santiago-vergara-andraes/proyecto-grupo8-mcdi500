@@ -1,0 +1,99 @@
+{
+  "contexto": {
+    "sha256": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a",
+    "python": "3.13.17",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "git": {
+      "disponible": true,
+      "rama": "feature/f2-preprocesamiento",
+      "commit": "3a004826bc9765fcc5c9e88e9384faba9af2d6ba",
+      "cambios_sin_confirmar": true
+    },
+    "ambito": "Ejecución local del notebook con kernel .venv del proyecto."
+  },
+  "decision_cohorte": {
+    "regla": "Mayor cobertura por fecha exacta de entrada y duración; desempate por fecha y duración crecientes.",
+    "fecha_entrada_principal": "2026-09-27",
+    "noches": 1,
+    "n_base_elegible": 27633,
+    "n_principal": 2080,
+    "porcentaje_base_en_principal": 7.5272319328339305,
+    "mes_entrada_sensibilidad": "2026-09",
+    "n_sensibilidad": 5039,
+    "limitacion": "La cohorte no es representativa de toda la oferta. El mismo mes no garantiza igualdad de precios reales ni elimina la inflación."
+  },
+  "filas_originales": 29753,
+  "columnas_originales": 90,
+  "filas_base_elegible": 27633,
+  "columnas_base_elegible": 21,
+  "pruebas_correctas": true,
+  "controles": [
+    {
+      "control": "base_no_vacia",
+      "cumple": true
+    },
+    {
+      "control": "id_unico_y_presente",
+      "cumple": true
+    },
+    {
+      "control": "precio_finito_positivo",
+      "cumple": true
+    },
+    {
+      "control": "moneda_ARS",
+      "cumple": true
+    },
+    {
+      "control": "fechas_y_duracion_coherentes",
+      "cumple": true
+    },
+    {
+      "control": "capacidad_entera_positiva",
+      "cumple": true
+    },
+    {
+      "control": "grupos_principales_presentes",
+      "cumple": true
+    },
+    {
+      "control": "tipos_reconocidos",
+      "cumple": true
+    },
+    {
+      "control": "log_precio_reversible",
+      "cumple": true
+    },
+    {
+      "control": "razon_por_plaza_coherente",
+      "cumple": true
+    },
+    {
+      "control": "sin_nombres_URL_texto_libre_coordenadas",
+      "cumple": true
+    },
+    {
+      "control": "archivo_original_inmutable",
+      "cumple": true
+    },
+    {
+      "control": "tabla_original_inmutable",
+      "cumple": true
+    },
+    {
+      "control": "tres_CSV_releidos_y_cotejados",
+      "cumple": true
+    },
+    {
+      "control": "indicadores_tipo_releidos_y_cotejados",
+      "cumple": true
+    }
+  ],
+  "sha256_salidas_locales": {
+    "base_cotizaciones_f2.csv": "fea1b7af431c363145ea04d34bb7201a3f53a9a7cbde47b984a80bc724969dec",
+    "cohorte_principal_f2.csv": "a4a80c6246dd884efde0916b2d57b6047a8a283e3bcf619021a60a02ebf202bb",
+    "cohorte_sensibilidad_f2.csv": "850a74335b16942a5a6fcb923fbf3c84302172a390e7325ead8aaa43279ff35b",
+    "indicadores_tipo_f2.csv": "b90736cf6eeacc4c5182ada450b73fe2c37ed94de594986053641019d2ba04d0"
+  }
+}

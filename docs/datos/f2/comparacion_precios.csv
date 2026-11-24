@@ -1,0 +1,16 @@
+indicador,valor
+anuncios_totales,29753.0
+price_presente_original,27634.0
+price_numerico_finito,27634.0
+price_presente_no_interpretable,0.0
+precio_quote_presente_original,27633.0
+precio_quote_numerico_finito,27633.0
+ambos_numericos_finitos,27633.0
+solo_price_finito,1.0
+solo_precio_quote_finito,0.0
+coinciden_tolerancia_0_01_ARS,27633.0
+difieren_mas_0_01_ARS,0.0
+porcentaje_coincidencia_entre_ambos,100.0
+diferencia_absoluta_maxima_ARS,0.0
+cotizacion_precio_coincide_JSON,27633.0
+cotizacion_total_coincide_JSON,27633.0
