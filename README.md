@@ -36,7 +36,7 @@ Los objetivos orientan las próximas actividades; su formulación no implica que
 | Fuente | Inside Airbnb |
 | Ciudad | Buenos Aires, Argentina |
 | Archivo original | `listings.csv.gz` |
-| Ubicación en el repositorio | `data/raw/listings.csv.gz` |
+| Ubicación local, excluida de Git | `data/raw/listings.csv.gz` |
 | Registros | 29.753 |
 | Variables | 90 |
 | Tamaño comprimido | Aproximadamente 17,3 MB, según el validador |
@@ -45,7 +45,35 @@ Los objetivos orientan las próximas actividades; su formulación no implica que
 - [Descarga del archivo original](https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz).
 - [Fuente y condiciones de uso](https://insideairbnb.com/get-the-data/).
 
-El archivo original se conserva comprimido y sin modificaciones en `data/raw/`. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye la huella SHA-256 cotejada con el archivo local durante la ejecución de F1.
+El archivo original se conserva localmente, comprimido y sin modificaciones en `data/raw/`, que está excluido de Git mediante `.gitignore`. La reproducción requiere obtener el archivo desde el proveedor y comprobar su huella. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye la huella SHA-256 cotejada con el archivo local durante la ejecución de F1.
+
+## Obtención local y distribución de los datos
+
+El original contiene nombres públicos, enlaces y datos de perfiles de anfitriones. Su distribución se realiza desde el recurso oficial de Inside Airbnb; el repositorio conserva el código, la documentación y las evidencias agregadas del análisis.
+
+- Recurso exacto: https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz
+- Licencia indicada por el proveedor: **Creative Commons Attribution 4.0 International (CC BY 4.0)**, con atribución a Inside Airbnb.
+- Condiciones de uso: https://insideairbnb.com/get-the-data/
+- Ruta local: `data/raw/listings.csv.gz`, excluida de Git.
+- SHA-256 verificado:
+
+```text
+c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a
+```
+
+En un clon limpio, antes de abrir los notebooks:
+
+```powershell
+New-Item -ItemType Directory -Force .\data\raw | Out-Null
+Invoke-WebRequest -Uri "https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz" -OutFile .\data\raw\listings.csv.gz
+$huellaEsperadaDataset = "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a"
+$huellaObtenidaDataset = (Get-FileHash .\data\raw\listings.csv.gz -Algorithm SHA256).Hash
+if ($huellaObtenidaDataset -ne $huellaEsperadaDataset) { throw "La huella del dataset no coincide con la fuente documentada." }
+```
+
+Si el archivo ya está disponible, se comprueba su huella sin volver a descargarlo ni reemplazarlo. El [procedimiento de obtención](docs/datos/obtencion_dataset.md) desarrolla la conservación local, la verificación y los criterios de distribución.
+
+La exclusión de Git y la retirada del índice están preparadas. La limpieza de las referencias históricas se completará y verificará por separado antes de integrar a `main`.
 
 ## Validación inicial del dataset
 
@@ -79,7 +107,7 @@ La clasificación automática se contrastó con el significado de las variables 
 | `F2/` | Obtención, exploración, limpieza, transformación y validación de datos. |
 | `src/` | Funciones Python reutilizables. |
 | `tests/` | Pruebas de lectura, diagnóstico y conservación de los datos. |
-| `data/raw/` | Datos originales sin modificaciones. |
+| `data/raw/` | Datos originales locales, inmutables y excluidos de Git. |
 | `data/processed/` | Resultados generados durante el preprocesamiento. |
 | `docs/entorno/` | Instalación, configuración y reproducción del entorno. |
 | `docs/repositorio/` | Creación y organización del repositorio. |
@@ -99,6 +127,7 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 - [Configuración del entorno](docs/entorno/instalacion_entorno.md).
 - [Validación inicial del dataset](docs/datos/validacion_dataset.md).
 - [Ficha de procedencia](docs/datos/fuente_dataset.md).
+- [Obtención local y verificación del dataset](docs/datos/obtencion_dataset.md).
 - [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
 - [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
@@ -176,7 +205,7 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 
 - Configuración inicial del entorno virtual de Python.
 - Organización de las carpetas de documentación.
-- Incorporación del dataset original al repositorio.
+- Obtención local y reconocimiento del dataset original.
 - Ejecución de la validación inicial y generación de su informe.
 - Registro de procedencia y fecha real de descarga del dataset.
 - Elaboración del diccionario de las 90 variables y revisión de sus roles analíticos.
@@ -191,6 +220,8 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 
 ### Pendientes de F1
 
+- Registrar el ajuste de distribución del dataset y completar la limpieza del historial con respaldo.
+
 - Guardar el notebook actualizado y comprobar que conserva las salidas completas y la numeración desde 1 tras reiniciar el kernel.
 - Revisar la evidencia generada y conservar el inventario completo de dependencias.
 - Revisar el mapa conceptual y su correspondencia con el proyecto.
@@ -202,3 +233,7 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 - Generar los archivos procesados y comprobar su lectura y consistencia.
 - Redactar el informe técnico con las evidencias obtenidas y los apartados exigidos.
 - Verificar la reproducción desde un clon limpio e integrar los cambios en `main`.
+
+## Referencia del dataset
+
+Inside Airbnb. (2026). *Buenos Aires: Detailed listings* [Conjunto de datos; recurso identificado como 2026-09-23]. https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz
