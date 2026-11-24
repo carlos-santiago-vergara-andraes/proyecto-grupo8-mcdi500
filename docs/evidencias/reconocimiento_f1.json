@@ -1,6 +1,6 @@
 {
   "fase": "F1",
-  "fecha_ejecucion_utc": "2026-11-23T04:51:02.988422+00:00",
+  "fecha_ejecucion_utc": "2026-11-24T03:51:57.576375+00:00",
   "alcance": "Definición, entorno y reconocimiento inicial; sin limpieza ni imputación",
   "entorno": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "componente": "Intérprete del kernel",
-      "valor": "c:\\Users\\devco\\Documents\\Magister\\PROGRAMACIÓN PARA LA CIENCIA -  MCDI500\\proyecto-grupo8-mcdi500\\.venv\\Scripts\\python.exe"
+      "valor": "c:\\Users\\devco\\Documents\\Magister\\proyecto-mcdi500-limpio\\.venv\\Scripts\\python.exe"
     },
     {
       "componente": "Plataforma",
@@ -86,8 +86,8 @@
   "git": {
     "disponible": true,
     "rama": "feature/f1-definicion-entorno",
-    "commit": "6cf6cd89e194303f92e172cf6a587bb0b1e0bd1c",
-    "cambios_sin_confirmar": true
+    "commit": "539f48bee8e38d5e2880deee03e577e64b0fa5d1",
+    "cambios_sin_confirmar": false
   },
   "fuente": {
     "ruta": "data\\raw\\listings.csv.gz",
