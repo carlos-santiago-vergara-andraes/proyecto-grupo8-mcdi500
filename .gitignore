@@ -21,3 +21,6 @@ desktop.ini
 # Datos pesados y modelos
 *.ckpt
 *.pth
+
+# Data raw
+/data/raw/
