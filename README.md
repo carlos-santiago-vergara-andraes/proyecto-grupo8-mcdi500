@@ -73,7 +73,7 @@ if ($huellaObtenidaDataset -ne $huellaEsperadaDataset) { throw "La huella del da
 
 Si el archivo ya está disponible, se comprueba su huella sin volver a descargarlo ni reemplazarlo. El [procedimiento de obtención](docs/datos/obtencion_dataset.md) desarrolla la conservación local, la verificación y los criterios de distribución.
 
-La exclusión de Git y la retirada del índice están preparadas. La limpieza de las referencias históricas se completará y verificará por separado antes de integrar a `main`.
+Se verificaron la exclusión de Git, la conservación del archivo local y la retirada de `data/raw/` del historial filtrado. Al publicar la limpieza se verificó la concordancia de las ramas con la copia filtrada: `539f48bee8e38d5e2880deee03e577e64b0fa5d1` para F1 y `1bcf2be00feb2596e4e3e6d65983feb409beb8c6` para `main`. El [registro del retiro histórico](docs/repositorio/retiro_dataset_historial.md) documenta el respaldo, el método y las verificaciones. Posteriormente se registró y envió la reproducción desde un clon limpio en `f368242`. La integración mediante Pull Request permanece pendiente.
 
 ## Validación inicial del dataset
 
@@ -123,15 +123,20 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 - [Problema, pregunta, objetivos y alcance](F1/definicion_problema.md).
 - [Notebook F1](F1/F1_Definicion.ipynb): ejecutado en la `.venv` del proyecto, con reconocimiento del dataset y trazabilidad de Git verificados.
 - [Instrucciones de ejecución de F1](docs/entorno/ejecucion_f1.md).
+- [Mapa conceptual editable](docs/mapas/mapa_conceptual.md).
+- [Mapa conceptual en PDF](docs/mapas/mapa_conceptual.pdf).
+- [Vinculación del mapa con el avance](docs/mapas/vinculacion_mapa_f1.md).
+- [Reproducción desde un clon limpio](docs/repositorio/reproduccion_clon_limpio_f1.md).
 - [Creación del repositorio](docs/repositorio/creacion_repositorio.md).
 - [Configuración del entorno](docs/entorno/instalacion_entorno.md).
 - [Validación inicial del dataset](docs/datos/validacion_dataset.md).
 - [Ficha de procedencia](docs/datos/fuente_dataset.md).
 - [Obtención local y verificación del dataset](docs/datos/obtencion_dataset.md).
+- [Retiro del dataset del historial publicado](docs/repositorio/retiro_dataset_historial.md).
 - [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
 - [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
-Los enlaces al notebook F2, al mapa vigente y al informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
+Los enlaces al notebook F2 y al informe técnico se incorporarán a medida que esos productos estén preparados y verificados.
 
 ## Entorno de trabajo
 
@@ -153,7 +158,7 @@ python --version
 python -c "import sys; print(sys.executable)"
 ```
 
-El notebook F1 verificó el kernel de la `.venv` del proyecto, Python 3.13.17 y las importaciones de las cinco dependencias directas. `pip check` finalizó sin incompatibilidades. Las versiones observadas se fijaron en `requirements.txt`: ipykernel 7.4.0, JupyterLab 4.6.6, Notebook 7.6.5, NumPy 2.5.4 y pandas 3.1.0. El inventario de dependencias transitivas y la reproducción desde un clon limpio se completarán durante el cierre técnico.
+El notebook F1 verificó el kernel de la `.venv` del proyecto, Python 3.13.17 y las importaciones de las cinco dependencias directas. `pip check` finalizó sin incompatibilidades. Las versiones observadas se fijaron en `requirements.txt`: ipykernel 7.4.0, JupyterLab 4.6.6, Notebook 7.6.5, NumPy 2.5.4 y pandas 3.1.0. El inventario de dependencias transitivas se conserva en `requirements.lock.txt` y se utilizó para reconstruir la `.venv` del clon nuevo.
 
 ## Ejecución del notebook F1
 
@@ -172,7 +177,7 @@ Para conservar las versiones efectivamente instaladas, después de verificar el 
 python -m pip freeze | Set-Content -Encoding UTF8 requirements.lock.txt
 ```
 
-El notebook guardado registró la generación de `docs/evidencias/reconocimiento_f1.json` en el entorno del proyecto. La consulta de Git ya identifica la rama y el commit; al guardar la ejecución actualizada se revisará que esa referencia quede conservada también en la evidencia generada al final. El inventario completo de dependencias transitivas permanece pendiente de generación.
+El notebook guardado registró la generación de `docs/evidencias/reconocimiento_f1.json` en el entorno del proyecto. La consulta de Git ya identifica la rama y el commit; la ejecución guardada desde el clon nuevo se registró junto con el JSON de reconocimiento en el commit `f368242`. El inventario completo de dependencias transitivas se conserva en `requirements.lock.txt`.
 
 La suite incluye ocho pruebas: seis de lectura, diagnóstico y conservación de datos, y dos de trazabilidad de Git mediante respuestas simuladas. Cubren archivos comprimidos, faltantes, infinitos, diccionarios incoherentes, JSON no válido, fechas inconsistentes, rutas Unicode y detección de subcarpetas. Se ejecutan desde la raíz, con la `.venv` activa:
 
@@ -180,7 +185,7 @@ La suite incluye ocho pruebas: seis de lectura, diagnóstico y conservación de 
 python -m unittest discover -s tests -v
 ```
 
-La suite completa finalizó localmente con **8 pruebas en 0,206 segundos y resultado `OK`**. La salida se conserva en [la evidencia de pruebas](docs/evidencias/pruebas_reconocimiento_f1.txt). El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
+La suite completa finalizó en el clon nuevo con **8 pruebas en 0,112 segundos y resultado `OK`**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
 
 ## Control de versiones
 
@@ -190,10 +195,12 @@ La consulta de trazabilidad realizada desde el notebook registró:
 
 - Repositorio disponible: `True`.
 - Rama: `feature/f1-definicion-entorno`.
-- Commit de referencia: `6cf6cd89e194303f92e172cf6a587bb0b1e0bd1c`.
-- Cambios sin confirmar durante la consulta: `True`.
+- Commit de referencia: `539f48bee8e38d5e2880deee03e577e64b0fa5d1`.
+- Cambios sin confirmar durante la consulta en el clon nuevo: `False`.
 
-El último indicador describe el estado de los archivos de trabajo en ese momento. El commit que incorpore el notebook, sus salidas y la documentación actualizados será posterior a la referencia consultada. Esta consulta no acredita un push ni la integración a `main`.
+El último indicador describe el estado de los archivos de trabajo en ese momento. Después de guardar las nuevas salidas se registraron el notebook y el JSON de reconocimiento en el commit `f368242`, con mensaje `test(f1): registrar reproducción desde clon limpio`. El push confirmó su envío a la rama F1. La integración a `main` permanece pendiente.
+
+La reescritura histórica cambió los identificadores de los commits afectados. Las referencias previas descritas en este README corresponden a registros anteriores a la limpieza; su correspondencia con las nuevas referencias se documenta en el registro del retiro histórico.
 
 Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Request. F2 se desarrollará posteriormente en su propia rama. La versión evaluable del proyecto deberá quedar integrada en `main` antes de la entrega.
 
@@ -203,6 +210,7 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 
 ### Avances realizados
 
+- Exclusión del dataset original de Git y limpieza histórica de `data/raw/`, con respaldo y referencias remotas verificadas.
 - Configuración inicial del entorno virtual de Python.
 - Organización de las carpetas de documentación.
 - Obtención local y reconocimiento del dataset original.
@@ -217,14 +225,14 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 - Coincidencia de la huella del archivo y comprobación de conservación del dataset.
 - Fijación de las cinco dependencias directas según las versiones verificadas.
 - Verificación de Git desde el notebook, con identificación de la rama y el commit de referencia.
+- Reconstrucción de la `.venv` desde `requirements.lock.txt` en un clon nuevo.
+- Reproducción de F1 y ocho pruebas aprobadas en ese entorno, registrada y enviada en `f368242`.
+- Preparación del mapa conceptual en Markdown y PDF y de su vinculación con las evidencias de F1.
 
 ### Pendientes de F1
 
-- Registrar el ajuste de distribución del dataset y completar la limpieza del historial con respaldo.
-
-- Guardar el notebook actualizado y comprobar que conserva las salidas completas y la numeración desde 1 tras reiniciar el kernel.
-- Revisar la evidencia generada y conservar el inventario completo de dependencias.
-- Revisar el mapa conceptual y su correspondencia con el proyecto.
+- Incorporar el mapa, su vinculación y los registros de cierre mediante un commit.
+- Revisar el Pull Request de F1 e integrarlo a `main` antes de la entrega.
 
 ### Continuidad hacia F2 y la entrega sumativa
 
@@ -232,7 +240,7 @@ Al completar y verificar F1, la rama se integrará a `main` mediante un Pull Req
 - Ejecutar y documentar el notebook F2, conservando sus salidas y verificaciones.
 - Generar los archivos procesados y comprobar su lectura y consistencia.
 - Redactar el informe técnico con las evidencias obtenidas y los apartados exigidos.
-- Verificar la reproducción desde un clon limpio e integrar los cambios en `main`.
+- Verificar la reproducción de F2 e integrar sus cambios a `main` mediante Pull Request.
 
 ## Referencia del dataset
 

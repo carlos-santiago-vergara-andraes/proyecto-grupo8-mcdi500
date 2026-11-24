@@ -64,7 +64,7 @@ Para conservar también el inventario de dependencias transitivas del entorno va
 python -m pip freeze | Set-Content -Encoding UTF8 requirements.lock.txt
 ```
 
-El inventario debe generarse desde el entorno que ejecuta el notebook. Para reconstruir ese conjunto de versiones en una instalación posterior se utilizará `python -m pip install -r requirements.lock.txt`. La existencia del inventario no reemplaza la prueba desde un clon limpio.
+El inventario debe generarse desde el entorno que ejecuta el notebook. Para reconstruir ese conjunto de versiones en una instalación posterior se utilizará `python -m pip install -r requirements.lock.txt`. El inventario se utilizó para reconstruir la nueva `.venv` durante la comprobación desde un clon limpio.
 
 ## Resultados que deben comprobarse
 
@@ -95,12 +95,12 @@ Las dos pruebas adicionales de `tests/test_trazabilidad_git.py` comprueban, medi
 La ejecución realizada desde la terminal con `.venv` activa finalizó correctamente. Se registró el siguiente resumen:
 
 ```text
-Ran 8 tests in 0.206s
+Ran 8 tests in 0.112s
 
 OK
 ```
 
-Este resultado corresponde a la suite completa de reconocimiento y trazabilidad ejecutada en la `.venv` del proyecto. La salida registrada se conserva en [pruebas_reconocimiento_f1.txt](../evidencias/pruebas_reconocimiento_f1.txt).
+Este resultado corresponde a la suite completa de reconocimiento y trazabilidad ejecutada en la `.venv` del proyecto. La salida del clon nuevo se conserva en [pruebas_clon_limpio_f1.txt](../evidencias/pruebas_clon_limpio_f1.txt). El resultado inicial permanece en su archivo de evidencia anterior.
 
 ## Resultado de la ejecución revisada
 
@@ -120,14 +120,14 @@ La salida actual de la consulta de Git confirmó:
 
 - `disponible`: `True`.
 - `rama`: `feature/f1-definicion-entorno`.
-- `commit`: `6cf6cd89e194303f92e172cf6a587bb0b1e0bd1c`.
-- `cambios_sin_confirmar`: `True`.
+- `commit`: `539f48bee8e38d5e2880deee03e577e64b0fa5d1`.
+- `cambios_sin_confirmar`: `False` al momento de la consulta en el clon nuevo.
 
 La rama y el commit quedaron identificados desde el notebook. La consulta verifica el árbol de trabajo y su raíz mediante el prefijo relativo de Git. No modifica archivos ni el historial.
 
-`cambios_sin_confirmar = True` indica que había archivos nuevos o modificados sin confirmar durante la consulta; no representa un error de ejecución. La referencia identifica el `HEAD` de ese momento. El commit que incorpore las salidas y la documentación actualizadas será posterior y se consultará en el historial del repositorio.
+El indicador `False` señala que la consulta se realizó sin cambios pendientes en ese momento. Las nuevas salidas se guardaron después y se incorporaron mediante el commit `f368242`, cuyo envío a GitHub quedó confirmado.
 
-Para conservar el resultado, se guardará el notebook con **Ctrl + S** y se comprobará que la evidencia JSON generada al final contenga la misma información de Git. La versión final deberá conservar todas las salidas y la secuencia de ejecución de 1 a 8 tras el reinicio del kernel. La consulta local no demuestra que los cambios ya se hayan enviado a GitHub.
+La ejecución se guardó con **Ctrl + S** y se registraron los cambios del notebook y del JSON de reconocimiento. La salida del push confirmó el avance remoto de `539f48b` a `f368242`. El [registro de reproducción](../repositorio/reproduccion_clon_limpio_f1.md) documenta la comprobación desde el clon nuevo.
 
 Para conservar la salida después de ejecutar el notebook, que crea la carpeta de evidencias:
 
