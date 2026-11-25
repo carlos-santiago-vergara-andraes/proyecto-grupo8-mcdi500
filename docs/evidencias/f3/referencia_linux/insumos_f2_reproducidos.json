@@ -1,0 +1,10 @@
+{
+  "ambito": "Resultados F2 reproducidos con sus funciones en Linux, no CSV originales de Windows.",
+  "python": "3.13.5",
+  "sha256_original": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a",
+  "sha256_salidas_locales": {
+    "base_cotizaciones_f2.csv": "3e626038c4687b56d07dc8a03d0ca0256134876f17a85ccaacd1d58b0b7a50a8",
+    "grupo_principal_f2.csv": "b21e06365a329eef1ae19214fc0854821121d2f4cf93ee95f46fddbf8183a32c",
+    "grupo_sensibilidad_f2.csv": "db9873a47ea9ac2d69b7bae8ecfe75dec0ebee697b31fc7e41f395dc2db24e86"
+  }
+}

@@ -1,0 +1,4 @@
+etapa,filas_entrada,filas_salida,columnas_salida
+VerificadorCotizaciones,29753,29753,31
+PreparadorBaseAnalitica,29753,27633,21
+SelectorGrupoComparable,27633,2080,21

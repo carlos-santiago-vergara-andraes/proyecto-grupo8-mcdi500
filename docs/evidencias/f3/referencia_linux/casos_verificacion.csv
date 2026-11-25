@@ -1,0 +1,6 @@
+caso,resultado
+normal: conjunto real,verificado
+límite: una fila válida,verificado
+sin ajuste previo,RuntimeError capturada
+columna requerida ausente,ValueError capturada
+tipo de entrada incorrecto,TypeError capturada

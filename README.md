@@ -105,6 +105,7 @@ La clasificación automática se contrastó con el significado de las variables 
 |---|---|
 | `F1/` | Definición del problema, entorno y reconocimiento inicial del dataset. |
 | `F2/` | Obtención, exploración, limpieza, transformación y validación de datos. |
+| `F3/` | Núcleo algorítmico, clases, equivalencia F2/F3 y mediciones de eficiencia. |
 | `src/` | Funciones Python reutilizables. |
 | `tests/` | Pruebas de lectura, diagnóstico, trazabilidad de Git, preprocesamiento y conservación de los datos. |
 | `data/raw/` | Datos originales locales, inmutables y excluidos de Git. |
@@ -192,7 +193,7 @@ F1 incorporó ocho pruebas: seis de lectura, diagnóstico y conservación de dat
 python -m unittest discover -s tests -v
 ```
 
-En la verificación histórica de F1 desde el clon nuevo, las **8 pruebas finalizaron en 0,112 segundos con resultado `OK`**. Con las diez pruebas incorporadas en F2, el comando anterior ejecuta actualmente **18 pruebas**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
+En la verificación histórica de F1 desde el clon nuevo, las **8 pruebas finalizaron en 0,112 segundos con resultado `OK`**. Con las diez pruebas incorporadas en F2, la suite de F2 alcanzó **18 pruebas**. F3 incorpora once pruebas adicionales; la suite completa preparada para F3 contiene **29 pruebas**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
 
 ## Control de versiones
 
@@ -227,11 +228,33 @@ Para comparar precios, se seleccionó un grupo de **2.080 anuncios** con entrada
 
 Se compararon `price` y `price_quote_price_per_night`: el primero presenta **27.634 valores** y el segundo **27.633**. Ambos están disponibles simultáneamente en **27.633 anuncios**, sin diferencias numéricas observadas. Se seleccionó `price_quote_price_per_night`, contrastado con el JSON de cotización y limitado a moneda ARS, fechas y duración válidas. Los [resultados de comparación](docs/datos/f2/comparacion_precios.csv) y las [decisiones de F2](docs/datos/preprocesamiento_f2.md) documentan la elección.
 
+## Ejecución del notebook F3
+
+F3 reorganiza las funciones de F2 mediante una clase base, tres clases hijas y un
+orquestador por composición. Las reglas de datos de F2 se mantienen. Se comparan
+resúmenes por bucle y agrupamiento vectorizado, con mediciones de tiempo y memoria.
+
+1. Conservar el original y los tres CSV locales de F2 con sus huellas registradas.
+2. Abrir `F3/F3_Nucleo_Algoritmico.ipynb` y seleccionar la `.venv` del proyecto.
+3. Ejecutar **Jupyter: Restart Kernel and Run All Cells** y esperar las diez celdas.
+4. Revisar equivalencia, casos límite, controles y métricas; guardar con **Ctrl + S**.
+5. Consultar `docs/evidencias/f3/resultados_f3.json` y las tablas generadas en esa carpeta.
+
+No se requieren dependencias nuevas. Los resultados por anuncio se conservan en
+`data/processed/`, fuera de Git. Los módulos de F3 están en `src/f3_*.py` y las pruebas
+en `tests/test_f3.py`; las 18 pruebas previas se complementan con once nuevas.
+
+- [Arquitectura y decisiones de F3](F3/arquitectura_y_decisiones.md).
+- [Correspondencia con la rúbrica oficial de F3](F3/verificacion_rubrica.md).
+- [Instrucciones completas de ejecución de F3](docs/entorno/ejecucion_f3.md).
+- [Verificación de preparación de F3 en Linux](docs/evidencias/f3/referencia_linux/README.md).
+
 ## Estado del proyecto
 
 - **F1 técnica integrada a `main` mediante PR #1:** notebook ejecutado, ocho pruebas aprobadas, fuente fuera de Git e historial limpiado; mapa conceptual en Markdown y PDF.
 - **F2 ejecutada, verificada e integrada a main mediante PR #2:** notebook ejecutado en la `.venv` del proyecto con Python 3.13.17, 18 pruebas aprobadas y 15 controles de validación satisfactorios. Se generaron una base elegible de 27.633 anuncios, un grupo principal de 2.080 y un grupo adicional de 5.039 para evaluar la sensibilidad temporal. Las decisiones y evidencias quedaron documentadas; los datos procesados se conservan localmente, fuera de Git.
 - **Informe sumativo F1 y F2 elaborado:** DOCX y PDF con plantilla institucional, resultados verificados, tabla de faltantes, relación objetivos–secciones de notebook, mapa y referencias APA 7.
-- **F3 y F4 pendientes.**
+- **F3 preparada:** módulos orientados a objetos, notebook y once pruebas adicionales. La verificación de preparación conserva los resultados de F2; falta ejecutar y guardar el notebook en el entorno local, completar el informe institucional y registrar la integración de F3 a `main`.
+- **F4 pendiente.**
 
 La guía de F2 documenta las salidas y las comprobaciones de reproducción. La evidencia Windows se conserva como ejecución principal. La verificación independiente en Linux parte de un clon de main, utiliza Python 3.13.5 y las mismas cinco dependencias directas fijadas, y ejecuta todas las celdas mediante IPython. Reprodujo los conteos, los quince controles, las dieciocho pruebas y las catorce tablas agregadas de F2. El inventario Linux y el método se documentan por separado; los notebooks de evidencia no sustituyen a los principales de F1/ y F2/.

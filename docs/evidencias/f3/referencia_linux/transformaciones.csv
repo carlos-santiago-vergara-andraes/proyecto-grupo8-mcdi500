@@ -1,0 +1,6 @@
+transformacion,filas,justificacion
+Casting de capacidad y noches a enteros,27633,Conservar conteos y duraciones enteras verificadas.
+Conservación de faltantes con indicadores,3510,Evitar inventar conteos y cambiar la cobertura de anuncios.
+Logaritmo log1p del precio,27633,Escala auxiliar reversible; el precio principal conserva ARS.
+Razón precio/capacidad,27633,"Referencia por capacidad anunciada, sin interpretarla como cobro por persona."
+Marcación IQR por tipo,2209,Señalar extremos sin retirarlos automáticamente.

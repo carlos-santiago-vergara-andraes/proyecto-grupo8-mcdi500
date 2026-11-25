@@ -1,0 +1,204 @@
+{
+  "contexto": {
+    "ambito": "Verificación en Linux: celdas ejecutadas secuencialmente mediante IPython; sin servidor Jupyter ni interfaz VS Code; insumos F2 reproducidos en Linux.",
+    "python": "3.13.5",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "plataforma": "Linux",
+    "git": {
+      "disponible": true,
+      "rama": "feature/f3-nucleo-algoritmico",
+      "commit": "06a4c5a66b5cd7b59e463c4144b0cc66dcae3643",
+      "cambios_sin_confirmar": true
+    },
+    "sha256_original": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a"
+  },
+  "resultados": {
+    "base_elegible": 27633,
+    "grupo_principal": 2080,
+    "grupo_adicional": 5039
+  },
+  "equivalencia": [
+    {
+      "control": "vista_F2_F3_exacta_en_memoria",
+      "cumple": true
+    },
+    {
+      "control": "base_F2_F3_exacta_en_memoria",
+      "cumple": true
+    },
+    {
+      "control": "base_equivalente_CSV_F2",
+      "cumple": true
+    },
+    {
+      "control": "principal_equivalente_CSV_F2",
+      "cumple": true
+    },
+    {
+      "control": "sensibilidad_equivalente_CSV_F2",
+      "cumple": true
+    }
+  ],
+  "controles": [
+    {
+      "control": "base_no_vacia",
+      "cumple": true
+    },
+    {
+      "control": "id_unico_y_presente",
+      "cumple": true
+    },
+    {
+      "control": "precio_finito_positivo",
+      "cumple": true
+    },
+    {
+      "control": "moneda_ARS",
+      "cumple": true
+    },
+    {
+      "control": "fechas_y_duracion_coherentes",
+      "cumple": true
+    },
+    {
+      "control": "capacidad_entera_positiva",
+      "cumple": true
+    },
+    {
+      "control": "grupos_principales_presentes",
+      "cumple": true
+    },
+    {
+      "control": "tipos_reconocidos",
+      "cumple": true
+    },
+    {
+      "control": "log_precio_reversible",
+      "cumple": true
+    },
+    {
+      "control": "razon_por_plaza_coherente",
+      "cumple": true
+    },
+    {
+      "control": "sin_nombres_URL_texto_libre_coordenadas",
+      "cumple": true
+    },
+    {
+      "control": "vista_F2_F3_exacta_en_memoria",
+      "cumple": true
+    },
+    {
+      "control": "base_F2_F3_exacta_en_memoria",
+      "cumple": true
+    },
+    {
+      "control": "base_equivalente_CSV_F2",
+      "cumple": true
+    },
+    {
+      "control": "principal_equivalente_CSV_F2",
+      "cumple": true
+    },
+    {
+      "control": "sensibilidad_equivalente_CSV_F2",
+      "cumple": true
+    },
+    {
+      "control": "archivo_original_inmutable",
+      "cumple": true
+    },
+    {
+      "control": "tabla_original_inmutable",
+      "cumple": true
+    },
+    {
+      "control": "parametros_estables_al_transformar",
+      "cumple": true
+    },
+    {
+      "control": "CSV_F3_exportados_y_releidos",
+      "cumple": true
+    },
+    {
+      "control": "indicadores_tipo_F3_releidos",
+      "cumple": true
+    },
+    {
+      "control": "referencias_F2_inmutables",
+      "cumple": true
+    },
+    {
+      "control": "resumenes_F2_F3_equivalentes",
+      "cumple": true
+    }
+  ],
+  "parametros": {
+    "VerificadorCotizaciones": {
+      "columnas_requeridas": [
+        "id",
+        "host_id",
+        "last_scraped",
+        "neighbourhood_cleansed",
+        "room_type",
+        "accommodates",
+        "price",
+        "price_quote_price_per_night",
+        "price_quote_total_price",
+        "price_quote_checkin_date",
+        "price_quote_checkout_date",
+        "price_quote_raw",
+        "bedrooms",
+        "beds",
+        "review_scores_rating"
+      ],
+      "moneda": "ARS"
+    },
+    "PreparadorBaseAnalitica": {
+      "limites_iqr": {
+        "Entire home/apt": {
+          "inferior": -15861.099999999991,
+          "superior": 252700.5
+        },
+        "Hotel room": {
+          "inferior": -17346.0,
+          "superior": 539378.0
+        },
+        "Private room": {
+          "inferior": -34397.5,
+          "superior": 155174.5
+        },
+        "Shared room": {
+          "inferior": -10653.974999999999,
+          "superior": 83067.58499999999
+        }
+      },
+      "faltantes": "conservar_con_indicador",
+      "imputar_precio": false
+    },
+    "SelectorGrupoComparable": {
+      "entrada": "2026-09-27",
+      "mes": "2026-09",
+      "noches": 1,
+      "regla": "Mayor cobertura; empate por fecha temprana y menor duración."
+    }
+  },
+  "decision_eficiencia": {
+    "criterio": "Menor tiempo mediano en la base completa; memoria informada por separado.",
+    "version_elegida": "vectorizada",
+    "filas_medidas": 27633,
+    "razon_tiempo_bucle_sobre_vectorizada": 15.007457825443323,
+    "razon_memoria_vectorizada_sobre_bucle": 1.1253478700797672,
+    "alcance": "Medición local; no establece superioridad universal."
+  },
+  "pruebas": {
+    "correctas": true,
+    "cantidad": 29
+  },
+  "sha256_salidas_locales": {
+    "base_cotizaciones_f3.csv": "3e626038c4687b56d07dc8a03d0ca0256134876f17a85ccaacd1d58b0b7a50a8",
+    "grupo_principal_f3.csv": "b21e06365a329eef1ae19214fc0854821121d2f4cf93ee95f46fddbf8183a32c",
+    "grupo_sensibilidad_f3.csv": "db9873a47ea9ac2d69b7bae8ecfe75dec0ebee697b31fc7e41f395dc2db24e86"
+  }
+}
