@@ -12,7 +12,7 @@
     },
     "ambito": "Ejecución local del notebook con kernel .venv del proyecto."
   },
-  "decision_cohorte": {
+  "decision_grupo": {
     "regla": "Mayor cobertura por fecha exacta de entrada y duración; desempate por fecha y duración crecientes.",
     "fecha_entrada_principal": "2026-09-27",
     "noches": 1,
@@ -21,7 +21,7 @@
     "porcentaje_base_en_principal": 7.5272319328339305,
     "mes_entrada_sensibilidad": "2026-09",
     "n_sensibilidad": 5039,
-    "limitacion": "La cohorte no es representativa de toda la oferta. El mismo mes no garantiza igualdad de precios reales ni elimina la inflación."
+    "limitacion": "El grupo no es representativa de toda la oferta. El mismo mes no garantiza igualdad de precios reales ni elimina la inflación."
   },
   "filas_originales": 29753,
   "columnas_originales": 90,
@@ -92,8 +92,8 @@
   ],
   "sha256_salidas_locales": {
     "base_cotizaciones_f2.csv": "fea1b7af431c363145ea04d34bb7201a3f53a9a7cbde47b984a80bc724969dec",
-    "cohorte_principal_f2.csv": "a4a80c6246dd884efde0916b2d57b6047a8a283e3bcf619021a60a02ebf202bb",
-    "cohorte_sensibilidad_f2.csv": "850a74335b16942a5a6fcb923fbf3c84302172a390e7325ead8aaa43279ff35b",
+    "grupo_principal_f2.csv": "a4a80c6246dd884efde0916b2d57b6047a8a283e3bcf619021a60a02ebf202bb",
+    "grupo_sensibilidad_f2.csv": "850a74335b16942a5a6fcb923fbf3c84302172a390e7325ead8aaa43279ff35b",
     "indicadores_tipo_f2.csv": "b90736cf6eeacc4c5182ada450b73fe2c37ed94de594986053641019d2ba04d0"
   }
 }

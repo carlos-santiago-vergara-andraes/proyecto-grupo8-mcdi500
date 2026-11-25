@@ -2,9 +2,9 @@
 
 ## Preparación
 
-F1 se integró a `main` mediante el PR #1. F2 se desarrolla en `feature/f2-preprocesamiento`, desde el clon limpio del proyecto. Se mantienen las dependencias y la `.venv` verificadas en F1.
+F1 y F2 se integraron a `main` mediante los PR #1 y #2. F2 se desarrolló en `feature/f2-preprocesamiento`, desde el clon limpio del proyecto. Se mantienen las dependencias y la `.venv` verificadas en F1.
 
-Copiar los archivos del paquete a la raíz del proyecto, conservando sus rutas. `README.md` actualiza el estado posterior al PR #1. El módulo y las pruebas de F1 se mantienen.
+Clonar la rama main y mantener las rutas del repositorio. Los módulos y pruebas de F1 se reutilizan en F2.
 
 Agregar `/data/processed/` a `.gitignore`. El original continúa localmente en `data/raw/listings.csv.gz`, con la huella documentada. No es necesario volver a descargarlo.
 
@@ -33,8 +33,8 @@ El flujo no utiliza muestreo ni operaciones aleatorias: las reglas y los desempa
 | Ruta | Contenido | Distribución |
 | --- | --- | --- |
 | `data/processed/base_cotizaciones_f2.csv` | Cotizaciones elegibles con variables analíticas y marcas. | Local; fuera de Git. |
-| `data/processed/cohorte_principal_f2.csv` | Fecha exacta y duración elegidas por cobertura. | Local; fuera de Git. |
-| `data/processed/cohorte_sensibilidad_f2.csv` | Mismo mes y duración para sensibilidad. | Local; fuera de Git. |
+| `data/processed/grupo_principal_f2.csv` | Fecha exacta y duración elegidas por cobertura. | Local; fuera de Git. |
+| `data/processed/grupo_sensibilidad_f2.csv` | Mismo mes y duración para sensibilidad. | Local; fuera de Git. |
 | `data/processed/indicadores_tipo_f2.csv` | Id e indicadores one-hot del tipo de alojamiento. | Local; fuera de Git. |
 | `docs/datos/preprocesamiento_f2.md` | Resultados, decisiones, límites y relación con objetivos. | Git. |
 | `docs/datos/f2/` | Tablas agregadas de diagnóstico, cobertura y validación. | Git. |
@@ -52,4 +52,8 @@ git ls-files -- data/raw/ data/processed/
 
 La segunda consulta no debe listar archivos de datos; puede conservar marcadores `.gitkeep`. No se usa `git add .` para este avance.
 
-Tras comprobar las salidas, actualizar el estado de F2 en el README a «ejecutada y verificada localmente», sin declarar terminados el informe, F3 ni F4. Registrar el avance en un commit descriptivo e integrarlo a main mediante PR al cerrar F2.
+## Estado verificado
+
+F2 se ejecutó en Windows con Python 3.13.17, pandas 3.1.0 y NumPy 2.5.4. Los diez bloques finalizaron en orden, con 18 pruebas aprobadas en 0,656 segundos y quince controles satisfactorios. Se conservaron 27.633 anuncios elegibles, 2.080 en el grupo exacto y 5.039 en la ampliación mensual. El avance se registró en 23ab86c y se integró mediante PR #2.
+
+La reproducción independiente desde main en Linux ejecutó todas las celdas de ambos notebooks mediante IPython, con un espacio de nombres nuevo por notebook y las mismas dependencias directas. Su método, inventario y salidas se conservan en docs/evidencias/replica_linux/. F3 y F4 permanecen pendientes.
