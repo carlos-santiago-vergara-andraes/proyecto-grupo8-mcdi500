@@ -42,7 +42,7 @@ La regla selecciona la combinación fecha exacta–duración con mayor cobertura
 
 La sensibilidad amplía las entradas al mes 2026-09 y conserva la duración: 5039 anuncios. No representa una corrección por inflación. Las fechas de estancia solicitadas no son fechas de transacciones ni una serie histórica de precios.
 
-Se informa la composición de la cohorte y sus diferencias con la base elegible. Los grupos pequeños se identifican; no se presentan como referencias estables. La selección limita la generalización al mercado completo.
+Se informa la composición del grupo y sus diferencias con la base elegible. Los grupos pequeños se identifican; no se presentan como referencias estables. La selección limita la generalización al mercado completo.
 
 | entrada | noches | n_anuncios |
 | --- | --- | --- |
@@ -93,7 +93,7 @@ La tabla siguiente describe las variables inspeccionadas antes de transformar. L
 
 ## Alternativas para variables complementarias
 
-Se compararon casos completos, media, mediana global y mediana por tipo con respaldo global en dormitorios y camas. Se midieron cobertura, valores fraccionarios y cambio de desviación poblacional. Ninguna de estas variables determina la cohorte principal; se conservan sus faltantes, con indicadores, para evitar alterar la cobertura o crear conteos artificiales. Los importes principales tampoco se rellenan.
+Se compararon casos completos, media, mediana global y mediana por tipo con respaldo global en dormitorios y camas. Se midieron cobertura, valores fraccionarios y cambio de desviación poblacional. Ninguna de estas variables determina el grupo principal; se conservan sus faltantes, con indicadores, para evitar alterar la cobertura o crear conteos artificiales. Los importes principales tampoco se rellenan.
 
 | variable | alternativa | n_original | n_ausentes_o_invalidos | n_resultante | n_rellenos | media_resultante | mediana_resultante | desviacion_poblacional | cambio_porcentual_desviacion | n_valores_fraccionarios |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -141,7 +141,7 @@ Los precios fuera de 1,5 IQR se marcan dentro de cada tipo; permanecen en la bas
 | Private room | 329 | 69000 | 47000 | 107018 | False | 856 | 70326 | 47355.195 | 115516.5575 | False |
 | Shared room | 19 | 35775 | 24431 | 42654 | True | 97 | 32106 | 26651.39 | 50451 | False |
 
-Las diferencias entre la cohorte exacta y la ampliada pueden reflejar cambios de composición y de condiciones de oferta; no se atribuyen causalmente a la fecha o la inflación.
+Las diferencias entre el grupo exacto y la ampliada pueden reflejar cambios de composición y de condiciones de oferta; no se atribuyen causalmente a la fecha o la inflación.
 
 ## Validación y exportación local
 
@@ -172,6 +172,6 @@ La fuente original permanece inmutable. Los CSV por anuncio se guardan localment
 | 1. Calidad y cobertura | 1. Obtención; 2. Exploración; 3. Limpieza. | Huella, faltantes, cotejo de precios y JSON, reglas de elegibilidad. |
 | 2. Base trazable | 3. Limpieza; 5. Transformación; 6. Validación y exportación. | Conteos secuenciales, alternativas de faltantes, variables derivadas y relectura verificada. |
 | 3. Descripción por grupos | 5. Transformación: Resúmenes iniciales y sensibilidad temporal. | n, mediana y cuartiles por barrio, tipo y capacidad. Los gráficos y su interpretación siguen pendientes en la fase analítica. |
-| 4. Estabilidad | 4. Condiciones comparables; 5. Transformación y revisión de atípicos. | Cohorte exacta, ampliación al mismo mes, composición y contraste con/sin marcas IQR. |
+| 4. Estabilidad | 4. Condiciones comparables; 5. Transformación y revisión de atípicos. | Grupo exacto, ampliación al mismo mes, composición y contraste con/sin marcas IQR. |
 
 Este registro técnico no sustituye el informe sumativo en la plantilla institucional ni las referencias APA 7 del entregable.

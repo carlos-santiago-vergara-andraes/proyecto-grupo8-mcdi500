@@ -1,0 +1,60 @@
+{
+  "ambito": "Clon independiente de main en Linux; distinto del equipo Windows local.",
+  "metodo": "Ejecución secuencial de todas las celdas mediante IPython, con nuevo espacio de nombres para cada notebook; sin servidor Jupyter.",
+  "fecha_verificacion": "2026-11-24",
+  "commit_main": "cb2e42e53583430ca717162640be83cf197f5412",
+  "python": "3.13.5",
+  "plataforma": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "pandas": "3.1.0",
+  "numpy": "2.5.4",
+  "dependencias_base": "requirements.txt del clon",
+  "notebooks": [
+    {
+      "notebook": "F1/F1_Definicion.ipynb",
+      "sha256_notebook_clonado": "9b8855bbde886e84dea6b4f24aa793b58a8764b5cbf9771770df227220300494",
+      "bloques_ejecutados": 8,
+      "contadores": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "errores": 0
+    },
+    {
+      "notebook": "F2/F2_Preprocesamiento.ipynb",
+      "sha256_notebook_clonado": "a90fd858085df41f146e49b7af434edc3186cba20505b969edcab61dbc00278e",
+      "bloques_ejecutados": 10,
+      "contadores": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "errores": 0
+    }
+  ],
+  "pruebas_correctas": true,
+  "sha256_original": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a",
+  "filas_base": 27633,
+  "filas_principal": 2080,
+  "filas_sensibilidad": 5039,
+  "controles_satisfactorios": 15,
+  "tablas_agregadas_equivalentes": 14,
+  "comparacion_agregados": {
+    "rtol": 1e-10,
+    "atol": 1e-08,
+    "check_dtype": false
+  },
+  "pull_request_f2": 2
+}

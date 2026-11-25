@@ -27,7 +27,7 @@ Los objetivos específicos son:
 3. Describir la distribución del precio por barrio, tipo y capacidad mediante tamaños de grupo, mediana, cuartiles y gráficos.
 4. Evaluar la estabilidad de las diferencias al considerar condiciones de estancia comparables y decisiones de preprocesamiento, comunicando cobertura y limitaciones.
 
-Los objetivos orientan las próximas actividades; su formulación no implica que el preprocesamiento o las comparaciones ya estén ejecutados.
+La evaluación de calidad y el preprocesamiento se ejecutaron en F1 y F2. Las comparaciones descriptivas y el análisis de estabilidad se completarán en las fases siguientes.
 
 ## Dataset
 
@@ -45,7 +45,7 @@ Los objetivos orientan las próximas actividades; su formulación no implica que
 - [Descarga del archivo original](https://data.insideairbnb.com/argentina/ciudad-aut%C3%B3noma-de-buenos-aires/buenos-aires/2026-09-23/data/listings.csv.gz).
 - [Fuente y condiciones de uso](https://insideairbnb.com/get-the-data/).
 
-El archivo original se conserva localmente, comprimido y sin modificaciones en `data/raw/`, que está excluido de Git mediante `.gitignore`. La reproducción requiere obtener el archivo desde el proveedor y comprobar su huella. Los resultados del preprocesamiento se generarán en `data/processed/` durante F2. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye la huella SHA-256 cotejada con el archivo local durante la ejecución de F1.
+El archivo original se conserva localmente, comprimido y sin modificaciones en `data/raw/`, que está excluido de Git mediante `.gitignore`. La reproducción requiere obtener el archivo desde el proveedor y comprobar su huella. Los resultados verificados del preprocesamiento se conservan localmente en `data/processed/`, excluido de Git. La descarga local se registró el **22 de noviembre de 2026 a las 23:27:27**. La [ficha de procedencia](docs/datos/fuente_dataset.md) distingue esa fecha de las fechas de extracción e incluye la huella SHA-256 cotejada con el archivo local durante la ejecución de F1.
 
 ## Obtención local y distribución de los datos
 
@@ -93,7 +93,7 @@ La validación registró:
 - Ninguna fila duplicada exacta.
 - Un aviso por columnas con más del 60 % de valores faltantes: 14 columnas completamente vacías, además de `source` y `license`, con 92,9 % y 98,3 % de faltantes, respectivamente.
 
-El resultado corresponde a las **90 columnas originales**. La selección de variables y el tratamiento de los faltantes se justificarán en F2, conservando la fuente original.
+El resultado corresponde a las **90 columnas originales**. La selección de variables y el tratamiento de faltantes se documentaron en F2, conservando la fuente original.
 
 La clasificación automática se contrastó con el significado de las variables en el diccionario de datos. Por ejemplo, `host_id` y `host_profile_id` son identificadores, aunque el validador los clasifique como variables continuas. El diccionario de datos documenta estas diferencias y distingue los campos con definición provisional. El cumplimiento del script constituye una comprobación inicial y se complementará con la revisión de los requisitos académicos de la actividad.
 
@@ -106,7 +106,7 @@ La clasificación automática se contrastó con el significado de las variables 
 | `F1/` | Definición del problema, entorno y reconocimiento inicial del dataset. |
 | `F2/` | Obtención, exploración, limpieza, transformación y validación de datos. |
 | `src/` | Funciones Python reutilizables. |
-| `tests/` | Pruebas de lectura, diagnóstico y conservación de los datos. |
+| `tests/` | Pruebas de lectura, diagnóstico, trazabilidad de Git, preprocesamiento y conservación de los datos. |
 | `data/raw/` | Datos originales locales, inmutables y excluidos de Git. |
 | `data/processed/` | Resultados locales del preprocesamiento, excluidos de Git. |
 | `docs/entorno/` | Instalación, configuración y reproducción del entorno. |
@@ -136,11 +136,14 @@ Esta organización identifica la función de cada carpeta. La ubicación previst
 - [Criterios del diccionario de variables](docs/datos/diccionario_variables.md).
 - [Diccionario completo de las 90 variables](docs/datos/diccionario_variables.csv).
 
-- [Notebook F2](F2/F2_Preprocesamiento.ipynb): preparado; pendiente de ejecución y guardado en la `.venv` local.
+- [Notebook F2](F2/F2_Preprocesamiento.ipynb): ejecutado y guardado en la `.venv` local, integrado a `main` mediante PR #2.
 - [Instrucciones y salidas de F2](docs/entorno/ejecucion_f2.md).
-- [Decisiones previstas de F2](F2/decisiones_preprocesamiento.md).
+- [Criterios de preprocesamiento de F2](F2/decisiones_preprocesamiento.md).
 
-El registro técnico de resultados se generará al ejecutar F2 en `docs/datos/preprocesamiento_f2.md`. El informe sumativo institucional sigue pendiente.
+- [Resultados y decisiones de F2](docs/datos/preprocesamiento_f2.md).
+- [Informe sumativo F1 y F2 en PDF](docs/informes/MCDI500_Informe_F1_F2_Precios_Airbnb_Buenos_Aires.pdf).
+- [Informe editable en DOCX](docs/informes/MCDI500_Informe_F1_F2_Precios_Airbnb_Buenos_Aires.docx).
+- [Reproducción independiente en Linux](docs/evidencias/replica_linux/README.md).
 
 ## Entorno de trabajo
 
@@ -183,17 +186,17 @@ python -m pip freeze | Set-Content -Encoding UTF8 requirements.lock.txt
 
 El notebook guardado registró la generación de `docs/evidencias/reconocimiento_f1.json` en el entorno del proyecto. La consulta de Git ya identifica la rama y el commit; la ejecución guardada desde el clon nuevo se registró junto con el JSON de reconocimiento en el commit `f368242`. El inventario completo de dependencias transitivas se conserva en `requirements.lock.txt`.
 
-La suite incluye ocho pruebas: seis de lectura, diagnóstico y conservación de datos, y dos de trazabilidad de Git mediante respuestas simuladas. Cubren archivos comprimidos, faltantes, infinitos, diccionarios incoherentes, JSON no válido, fechas inconsistentes, rutas Unicode y detección de subcarpetas. Se ejecutan desde la raíz, con la `.venv` activa:
+F1 incorporó ocho pruebas: seis de lectura, diagnóstico y conservación de datos, y dos de trazabilidad de Git mediante respuestas simuladas. Cubren archivos comprimidos, faltantes, infinitos, diccionarios incoherentes, JSON no válido, fechas inconsistentes, rutas Unicode y detección de subcarpetas. Se ejecutan desde la raíz, con la `.venv` activa:
 
 ```powershell
 python -m unittest discover -s tests -v
 ```
 
-La suite completa finalizó en el clon nuevo con **8 pruebas en 0,112 segundos y resultado `OK`**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
+En la verificación histórica de F1 desde el clon nuevo, las **8 pruebas finalizaron en 0,112 segundos con resultado `OK`**. Con las diez pruebas incorporadas en F2, el comando anterior ejecuta actualmente **18 pruebas**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
 
 ## Control de versiones
 
-F1 se desarrolló en `feature/f1-definicion-entorno` y se integró a `main` mediante el Pull Request #1. F2 se desarrolla en `feature/f2-preprocesamiento`. Los cambios se registran mediante commits descriptivos y cada fase se integra a `main` antes de la entrega.
+F1 se desarrolló en `feature/f1-definicion-entorno` y se integró a `main` mediante el Pull Request #1. F2 se desarrolló en `feature/f2-preprocesamiento` y se integró a `main` mediante el Pull Request #2. Los cambios se registran mediante commits descriptivos y cada fase se integra a `main` antes de la entrega.
 
 La consulta de trazabilidad realizada desde el notebook registró:
 
@@ -204,25 +207,31 @@ La consulta de trazabilidad realizada desde el notebook registró:
 
 El último indicador describe el estado de los archivos de trabajo en ese momento. Después de guardar las nuevas salidas se registraron el notebook y el JSON de reconocimiento en el commit `f368242`, con mensaje `test(f1): registrar reproducción desde clon limpio`. El push confirmó su envío a la rama F1. La integración de F1 a `main` se completó mediante el Pull Request #1.
 
-La reescritura histórica cambió los identificadores de los commits afectados. Las referencias previas descritas en este README corresponden a registros anteriores a la limpieza; su correspondencia con las nuevas referencias se documenta en el registro del retiro histórico.
+La reescritura histórica cambió los identificadores de los commits afectados. El registro del retiro histórico documenta la correspondencia entre las referencias anteriores y posteriores a la limpieza. Los commits citados como evidencias identifican momentos concretos de ejecución y no necesariamente el estado actual de `main`.
 
-F1 ya está integrada en `main`. La integración de F2 se realizará después de ejecutar y verificar su notebook. La versión evaluable de todas las fases deberá quedar integrada en `main` antes de la entrega.
+F1 y F2 están integradas en `main` mediante los PR #1 y #2. El commit de integración de F2 verificado desde un clon independiente es `cb2e42e53583430ca717162640be83cf197f5412`; incluye el avance registrado en `23ab86c`. El informe y su documentación de cierre se incorporan en un avance posterior. La versión evaluable deberá quedar en `main` antes de la entrega.
 
 ## Ejecución del notebook F2
 
 1. Mantener el archivo original en `data/raw/listings.csv.gz` y excluir también `/data/processed/` en `.gitignore`.
 2. Abrir `F2/F2_Preprocesamiento.ipynb` y seleccionar la misma `.venv` verificada en F1.
 3. Ejecutar **Jupyter: Restart Kernel and Run All Cells** y esperar la finalización completa.
-4. Revisar las salidas de precios, faltantes, cohortes, validación y pruebas; guardar con **Ctrl + S**.
+4. Revisar las salidas de precios, faltantes, grupos, validación y pruebas; guardar con **Ctrl + S**.
 5. Consultar `docs/datos/preprocesamiento_f2.md`, `docs/datos/f2/`, `docs/evidencias/preprocesamiento_f2.json` y `docs/evidencias/pruebas_preprocesamiento_f2.txt`.
 
 Las salidas por anuncio se conservan localmente en `data/processed/`; Git conserva el notebook, el código y las evidencias agregadas. No se publica el original ni se agregan archivos de `data/raw/` o `data/processed/` al commit. Las dependencias de F1 son suficientes.
 
+La ejecución local de F2 registró **18 pruebas aprobadas en 0,656 segundos y 15 controles de validación satisfactorios**. Las [evidencias de pruebas](docs/evidencias/pruebas_preprocesamiento_f2.txt) y el [registro de validación](docs/evidencias/preprocesamiento_f2.json) conservan los resultados.
+
+Para comparar precios, se seleccionó un grupo de **2.080 anuncios** con entrada el **27 de septiembre de 2026**, salida el **28 de septiembre de 2026** y duración de **una noche**. El grupo adicional de **5.039 anuncios** mantiene una noche y amplía las entradas a septiembre de 2026; permite evaluar la sensibilidad temporal, sin constituir un ajuste por inflación. Los grupos seleccionados no representan toda la oferta y las fechas de estancia no acreditan una misma fecha de fijación del precio.
+
+Se compararon `price` y `price_quote_price_per_night`: el primero presenta **27.634 valores** y el segundo **27.633**. Ambos están disponibles simultáneamente en **27.633 anuncios**, sin diferencias numéricas observadas. Se seleccionó `price_quote_price_per_night`, contrastado con el JSON de cotización y limitado a moneda ARS, fechas y duración válidas. Los [resultados de comparación](docs/datos/f2/comparacion_precios.csv) y las [decisiones de F2](docs/datos/preprocesamiento_f2.md) documentan la elección.
+
 ## Estado del proyecto
 
 - **F1 técnica integrada a `main` mediante PR #1:** notebook ejecutado, ocho pruebas aprobadas, fuente fuera de Git e historial limpiado; mapa conceptual en Markdown y PDF.
-- **F2 ejecutada y verificada localmente:** notebook ejecutado en la `.venv` del proyecto con Python 3.13.17, 18 pruebas aprobadas y 15 controles de validación satisfactorios. Se generaron una base elegible de 27.633 anuncios, una cohorte principal de 2.080 y una de sensibilidad de 5.039. Las decisiones y evidencias quedaron documentadas; los datos procesados se conservan localmente, fuera de Git.
-- **Informe sumativo pendiente:** incorporar resultados verificados, tabla de faltantes, relación objetivos–evidencias, plantilla institucional y referencias APA 7.
+- **F2 ejecutada, verificada e integrada a main mediante PR #2:** notebook ejecutado en la `.venv` del proyecto con Python 3.13.17, 18 pruebas aprobadas y 15 controles de validación satisfactorios. Se generaron una base elegible de 27.633 anuncios, un grupo principal de 2.080 y un grupo adicional de 5.039 para evaluar la sensibilidad temporal. Las decisiones y evidencias quedaron documentadas; los datos procesados se conservan localmente, fuera de Git.
+- **Informe sumativo F1 y F2 elaborado:** DOCX y PDF con plantilla institucional, resultados verificados, tabla de faltantes, relación objetivos–secciones de notebook, mapa y referencias APA 7.
 - **F3 y F4 pendientes.**
 
-La guía de F2 documenta las salidas esperadas y las comprobaciones previas al commit. El registro de referencia distingue el entorno de preparación del kernel local; no constituye evidencia de ejecución en el equipo Windows.
+La guía de F2 documenta las salidas y las comprobaciones de reproducción. La evidencia Windows se conserva como ejecución principal. La verificación independiente en Linux parte de un clon de main, utiliza Python 3.13.5 y las mismas cinco dependencias directas fijadas, y ejecuta todas las celdas mediante IPython. Reprodujo los conteos, los quince controles, las dieciocho pruebas y las catorce tablas agregadas de F2. El inventario Linux y el método se documentan por separado; los notebooks de evidencia no sustituyen a los principales de F1/ y F2/.
