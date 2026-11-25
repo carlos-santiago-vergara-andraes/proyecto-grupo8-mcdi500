@@ -1,0 +1,67 @@
+{
+  "contexto": {
+    "ambito": "Reconstrucción de entradas F3 en Linux con el código de main 4cd0c4c y la misma fuente original. No sustituye la ejecución Windows de F3.",
+    "sha256_original": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a",
+    "evidencia_F3_Windows": "docs/evidencias/f3/resultados_f3.json"
+  },
+  "parametros": {
+    "VerificadorCotizaciones": {
+      "columnas_requeridas": [
+        "id",
+        "host_id",
+        "last_scraped",
+        "neighbourhood_cleansed",
+        "room_type",
+        "accommodates",
+        "price",
+        "price_quote_price_per_night",
+        "price_quote_total_price",
+        "price_quote_checkin_date",
+        "price_quote_checkout_date",
+        "price_quote_raw",
+        "bedrooms",
+        "beds",
+        "review_scores_rating"
+      ],
+      "moneda": "ARS"
+    },
+    "PreparadorBaseAnalitica": {
+      "limites_iqr": {
+        "Entire home/apt": {
+          "inferior": -15861.099999999991,
+          "superior": 252700.5
+        },
+        "Hotel room": {
+          "inferior": -17346.0,
+          "superior": 539378.0
+        },
+        "Private room": {
+          "inferior": -34397.5,
+          "superior": 155174.5
+        },
+        "Shared room": {
+          "inferior": -10653.974999999999,
+          "superior": 83067.58499999999
+        }
+      },
+      "faltantes": "conservar_con_indicador",
+      "imputar_precio": false
+    },
+    "SelectorGrupoComparable": {
+      "entrada": "2026-09-27",
+      "mes": "2026-09",
+      "noches": 1,
+      "regla": "Mayor cobertura; empate por fecha temprana y menor duración."
+    }
+  },
+  "sha256_salidas_locales": {
+    "base_cotizaciones_f3.csv": "3e626038c4687b56d07dc8a03d0ca0256134876f17a85ccaacd1d58b0b7a50a8",
+    "grupo_principal_f3.csv": "b21e06365a329eef1ae19214fc0854821121d2f4cf93ee95f46fddbf8183a32c",
+    "grupo_sensibilidad_f3.csv": "db9873a47ea9ac2d69b7bae8ecfe75dec0ebee697b31fc7e41f395dc2db24e86"
+  },
+  "resultados": {
+    "base_elegible": 27633,
+    "grupo_principal": 2080,
+    "grupo_adicional": 5039
+  }
+}

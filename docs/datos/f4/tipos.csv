@@ -1,0 +1,5 @@
+tipo_alojamiento,n,mediana_ARS,q1_ARS,q3_ARS,etiqueta,grupo_pequeno
+Entire home/apt,1692,120800.0,98302.9475,166640.84999999998,Alojamiento completo,False
+Hotel room,40,253784.0,199257.0,298822.25,Habitación de hotel,False
+Private room,329,69000.0,47000.0,107018.0,Habitación privada,False
+Shared room,19,35775.0,24431.0,42654.0,Habitación compartida,True

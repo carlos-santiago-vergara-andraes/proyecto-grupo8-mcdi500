@@ -1,0 +1,4 @@
+objetivo,figura,comparacion,valor,unidad,limite
+OE3,01_tipos.png,Completos / habitaciones privadas,1.7507246376811594,razón de medianas,Diferencias de composición; no efecto causal del tipo.
+OE3–OE4,02_barrios.png,Belgrano / San Nicolas,39.41575665462571,porcentaje respecto del barrio de menor mediana,"Tipo completo, capacidad 2, seis barrios con n >= 30; cuartiles superpuestos."
+OE4,03_capacidades.png,Mayor cambio absoluto mensual / principal,3.35901994447243,porcentaje respecto de la mediana principal,"Capacidades 2–6, completos; grupos superpuestos; no ajusta inflación."
