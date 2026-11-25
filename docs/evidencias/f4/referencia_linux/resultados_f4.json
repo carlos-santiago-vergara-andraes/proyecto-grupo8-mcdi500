@@ -1,0 +1,171 @@
+{
+  "contexto": {
+    "fecha_UTC": "2026-11-25T21:17:11.285478+00:00",
+    "modo": "referencia_linux",
+    "metodo_ejecucion": "IPython secuencial en proceso nuevo; sin servidor Jupyter",
+    "python": "3.13.5",
+    "plataforma": "Linux",
+    "kernel_en_venv_proyecto": true,
+    "dependencias": {
+      "ipykernel": "7.4.0",
+      "jupyterlab": "4.6.6",
+      "notebook": "7.6.5",
+      "numpy": "2.5.4",
+      "pandas": "3.1.0",
+      "matplotlib": "3.10.8"
+    },
+    "git": {
+      "disponible": true,
+      "rama": "feature/f4-comunicacion-resultados",
+      "commit": "4cd0c4cdadcdce90719d00fa382fc107953d1c39",
+      "cambios_sin_confirmar": true
+    },
+    "evidencia_entradas_F3": "docs/evidencias/f4/referencia_linux/entradas_f3.json",
+    "sha256_original": "c8db6461c06c0de3efbdda6821d6d28c9aef7dff3c6fde64ac4fd3661e15b78a"
+  },
+  "resultados": {
+    "base_elegible": 27633,
+    "principal": 2080,
+    "mensual": 5039,
+    "barrios_comparados": 6,
+    "anuncios_barrios_comparados": 514,
+    "maximo_cambio_mediana_porcentaje": 3.35901994447243
+  },
+  "reglas": {
+    "minimo_por_grupo": 30,
+    "barrios_tipo": "Entire home/apt",
+    "barrios_capacidad": 2,
+    "sin_imputacion_ni_nueva_limpieza": true,
+    "mensual_incluye_principal": true,
+    "cuartiles_no_son_intervalos_de_confianza": true
+  },
+  "controles": [
+    {
+      "control": "sha256_F3_base",
+      "cumple": true
+    },
+    {
+      "control": "sha256_F3_principal",
+      "cumple": true
+    },
+    {
+      "control": "sha256_F3_sensibilidad",
+      "cumple": true
+    },
+    {
+      "control": "principal_conserva_valores_y_seleccion_F3",
+      "cumple": true
+    },
+    {
+      "control": "sensibilidad_conserva_valores_y_seleccion_F3",
+      "cumple": true
+    },
+    {
+      "control": "principal_contenido_en_ampliacion_mensual",
+      "cumple": true
+    },
+    {
+      "control": "tipos_recuento_y_cuartiles_independientes",
+      "cumple": true
+    },
+    {
+      "control": "barrios_recuento_y_cuartiles_independientes",
+      "cumple": true
+    },
+    {
+      "control": "capacidades_recuento_y_cuartiles_independientes",
+      "cumple": true
+    },
+    {
+      "control": "cobertura_y_umbral_de_grupos",
+      "cumple": true
+    },
+    {
+      "control": "fuente_SHA256_consistente_entre_fases",
+      "cumple": true
+    },
+    {
+      "control": "evidencias_previas_inmutables",
+      "cumple": true
+    },
+    {
+      "control": "equivalencia_F2_F3_ya_documentada",
+      "cumple": true
+    },
+    {
+      "control": "dimensiones_conservadas_de_F3",
+      "cumple": true
+    },
+    {
+      "control": "parametros_F3_documentados_inmutables",
+      "cumple": true
+    },
+    {
+      "control": "CSV_F3_inmutables",
+      "cumple": true
+    },
+    {
+      "control": "tablas_F4_inmutables",
+      "cumple": true
+    },
+    {
+      "control": "bucle_vectorizado_equivalentes",
+      "cumple": true
+    },
+    {
+      "control": "suite_completa_correcta",
+      "cumple": true
+    },
+    {
+      "control": "tres_figuras_exportadas",
+      "cumple": true
+    }
+  ],
+  "hallazgos": [
+    {
+      "objetivo": "OE3",
+      "figura": "01_tipos.png",
+      "comparacion": "Completos / habitaciones privadas",
+      "valor": 1.7507246377,
+      "unidad": "razón de medianas",
+      "limite": "Diferencias de composición; no efecto causal del tipo."
+    },
+    {
+      "objetivo": "OE3–OE4",
+      "figura": "02_barrios.png",
+      "comparacion": "Belgrano / San Nicolas",
+      "valor": 39.4157566546,
+      "unidad": "porcentaje respecto del barrio de menor mediana",
+      "limite": "Tipo completo, capacidad 2, seis barrios con n >= 30; cuartiles superpuestos."
+    },
+    {
+      "objetivo": "OE4",
+      "figura": "03_capacidades.png",
+      "comparacion": "Mayor cambio absoluto mensual / principal",
+      "valor": 3.3590199445,
+      "unidad": "porcentaje respecto de la mediana principal",
+      "limite": "Capacidades 2–6, completos; grupos superpuestos; no ajusta inflación."
+    }
+  ],
+  "sha256_entradas_F3": {
+    "base_cotizaciones_f3.csv": "3e626038c4687b56d07dc8a03d0ca0256134876f17a85ccaacd1d58b0b7a50a8",
+    "grupo_principal_f3.csv": "b21e06365a329eef1ae19214fc0854821121d2f4cf93ee95f46fddbf8183a32c",
+    "grupo_sensibilidad_f3.csv": "db9873a47ea9ac2d69b7bae8ecfe75dec0ebee697b31fc7e41f395dc2db24e86"
+  },
+  "sha256_salidas_publicas": {
+    "docs/datos/f4/barrios.csv": "d09b6a719b2a93f586d98fb10c9073db3058ac57ef79735832af3fa98098b7e8",
+    "docs/datos/f4/capacidades.csv": "bb30d177a27fd1b33b93e13eb6fcab5f10c151cd1655011e8cf7d9b8a51a4a8c",
+    "docs/datos/f4/cobertura.csv": "af19c9a36870af6701967af38829d8db6a6215eedc0257b26620ab7ff4f7aca3",
+    "docs/datos/f4/hallazgos_f4.csv": "b5347699ce44f397eb06d1abfc8541737e29e081dd0e418a4eaddef61fedb61a",
+    "docs/datos/f4/sensibilidad_temporal.csv": "c7900a97bf21b578e89befabdebac2844bad1ecf01e9b9f20439392570772f14",
+    "docs/datos/f4/tipos.csv": "ac6f1e62d37855ef07ada1c2b7ed98d5e233944562de290c022bf24f60476bf4",
+    "docs/figuras/f4/01_tipos.png": "c0077041c041a008967773b2c7676b8a80112828289398562398a2479b99268c",
+    "docs/figuras/f4/02_barrios.png": "e5c7cfffd351f43189b6fcb21ef68426099135adbc0611dd9b8d238ba7cf3765",
+    "docs/figuras/f4/03_capacidades.png": "8e59fef26beeae43ab72f13856b3a4dfc969c947e2cb84d17b36a2cb54f41233"
+  },
+  "sha256_codigo_F4": {
+    "src/f4_analisis.py": "4e22443970c962983c144596cc2431e335bf62fc16eb70e3841d0c98623bb5eb",
+    "src/f4_visualizacion.py": "b2eb24b099480155507711439eea507f97794d59323a74b92dbefcac22233fd8",
+    "tests/test_f4.py": "3881bcba4b9de693d6184b5aec10958816f066c8aae7a97478a64a94e03bb9d4"
+  }
+}

@@ -27,7 +27,7 @@ Los objetivos específicos son:
 3. Describir la distribución del precio por barrio, tipo y capacidad mediante tamaños de grupo, mediana, cuartiles y gráficos.
 4. Evaluar la estabilidad de las diferencias al considerar condiciones de estancia comparables y decisiones de preprocesamiento, comunicando cobertura y limitaciones.
 
-La evaluación de calidad y el preprocesamiento se ejecutaron en F1 y F2. Las comparaciones descriptivas y el análisis de estabilidad se completarán en las fases siguientes.
+La evaluación de calidad y el preprocesamiento se ejecutaron en F1 y F2. F3 conserva las reglas mediante clases y mediciones de eficiencia. F4 integra las comprobaciones y presenta las diferencias descriptivas y la sensibilidad temporal mediante tres gráficos.
 
 ## Dataset
 
@@ -106,6 +106,7 @@ La clasificación automática se contrastó con el significado de las variables 
 | `F1/` | Definición del problema, entorno y reconocimiento inicial del dataset. |
 | `F2/` | Obtención, exploración, limpieza, transformación y validación de datos. |
 | `F3/` | Núcleo algorítmico, clases, equivalencia F2/F3 y mediciones de eficiencia. |
+| `F4/` | Notebook integrador, decisiones visuales y correspondencia con los 26 criterios de evaluación. |
 | `src/` | Funciones Python reutilizables. |
 | `tests/` | Pruebas de lectura, diagnóstico, trazabilidad de Git, preprocesamiento y conservación de los datos. |
 | `data/raw/` | Datos originales locales, inmutables y excluidos de Git. |
@@ -116,8 +117,9 @@ La clasificación automática se contrastó con el significado de las variables 
 | `docs/mapas/` | Mapa conceptual y su archivo editable. |
 | `docs/informes/` | Plantilla de formato e informes técnicos. |
 | `docs/evidencias/` | Evidencias de ejecución y verificaciones. |
+| `docs/figuras/f4/` | Tres visualizaciones analíticas con fuente y unidades. |
 
-Esta organización identifica la función de cada carpeta. La ubicación prevista de un producto no implica que su elaboración esté finalizada.
+La organización vincula las cuatro fases con sus fuentes, código, evidencias y comunicación.
 
 ## Documentación disponible
 
@@ -166,7 +168,7 @@ python --version
 python -c "import sys; print(sys.executable)"
 ```
 
-El notebook F1 verificó el kernel de la `.venv` del proyecto, Python 3.13.17 y las importaciones de las cinco dependencias directas. `pip check` finalizó sin incompatibilidades. Las versiones observadas se fijaron en `requirements.txt`: ipykernel 7.4.0, JupyterLab 4.6.6, Notebook 7.6.5, NumPy 2.5.4 y pandas 3.1.0. El inventario de dependencias transitivas se conserva en `requirements.lock.txt` y se utilizó para reconstruir la `.venv` del clon nuevo.
+El notebook F1 verificó el kernel de la `.venv` del proyecto, Python 3.13.17 y las importaciones de las cinco dependencias directas. `pip check` finalizó sin incompatibilidades. Las versiones observadas se fijaron en `requirements.txt`: ipykernel 7.4.0, JupyterLab 4.6.6, Notebook 7.6.5, NumPy 2.5.4 y pandas 3.1.0. El inventario histórico de dependencias transitivas de Windows se conserva en `requirements.lock.txt`. F4 incorpora **Matplotlib 3.10.8** como sexta dependencia directa; la instalación actual utiliza `requirements.txt` y el notebook guarda un inventario completo de cada ejecución.
 
 ## Ejecución del notebook F1
 
@@ -193,7 +195,7 @@ F1 incorporó ocho pruebas: seis de lectura, diagnóstico y conservación de dat
 python -m unittest discover -s tests -v
 ```
 
-En la verificación histórica de F1 desde el clon nuevo, las **8 pruebas finalizaron en 0,112 segundos con resultado `OK`**. Con las diez pruebas incorporadas en F2, la suite de F2 alcanzó **18 pruebas**. F3 incorpora once pruebas adicionales; la suite completa preparada para F3 contiene **29 pruebas**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
+En la verificación histórica de F1 desde el clon nuevo, las **8 pruebas finalizaron en 0,112 segundos con resultado `OK`**. Con las diez pruebas incorporadas en F2, la suite de F2 alcanzó **18 pruebas**. F3 incorpora once pruebas adicionales; la suite de F3 contiene **29 pruebas**. Las trece incorporadas en F4 elevan la suite a **42 pruebas**. La salida se conserva en [la evidencia del clon limpio](docs/evidencias/pruebas_clon_limpio_f1.txt); el resultado inicial permanece en su archivo de evidencia anterior. El notebook guardado confirma ocho bloques ejecutados sin errores, la `.venv` correcta, 29.753 filas, 90 columnas, la huella esperada y la conservación de los datos. La consulta posterior de Git confirmó la identificación de la rama y el commit. Los pasos completos se documentan en [la guía de ejecución de F1](docs/entorno/ejecucion_f1.md).
 
 ## Control de versiones
 
@@ -210,7 +212,7 @@ El último indicador describe el estado de los archivos de trabajo en ese moment
 
 La reescritura histórica cambió los identificadores de los commits afectados. El registro del retiro histórico documenta la correspondencia entre las referencias anteriores y posteriores a la limpieza. Los commits citados como evidencias identifican momentos concretos de ejecución y no necesariamente el estado actual de `main`.
 
-F1 y F2 están integradas en `main` mediante los PR #1 y #2. El commit de integración de F2 verificado desde un clon independiente es `cb2e42e53583430ca717162640be83cf197f5412`; incluye el avance registrado en `23ab86c`. El informe y su documentación de cierre se incorporan en un avance posterior. La versión evaluable deberá quedar en `main` antes de la entrega.
+F1 y F2 están integradas en `main` mediante los PR #1 y #2. El commit de integración de F2 verificado desde un clon independiente es `cb2e42e53583430ca717162640be83cf197f5412`; incluye el avance registrado en `23ab86c`. El informe F1/F2 se integró mediante PR #3 (`06a4c5a`). F3 se integró mediante PR #4 (`4cd0c4c`), incluyendo el avance `9de8bf0`. El [registro de cambios](changelog.md) enlaza los hitos publicados y sus justificaciones.
 
 ## Ejecución del notebook F2
 
@@ -240,7 +242,7 @@ resúmenes por bucle y agrupamiento vectorizado, con mediciones de tiempo y memo
 4. Revisar equivalencia, casos límite, controles y métricas; guardar con **Ctrl + S**.
 5. Consultar `docs/evidencias/f3/resultados_f3.json` y las tablas generadas en esa carpeta.
 
-No se requieren dependencias nuevas. Los resultados por anuncio se conservan en
+F3 utiliza las cinco dependencias iniciales. F4 incorpora Matplotlib 3.10.8. Los resultados por anuncio se conservan en
 `data/processed/`, fuera de Git. Los módulos de F3 están en `src/f3_*.py` y las pruebas
 en `tests/test_f3.py`; las 18 pruebas previas se complementan con once nuevas.
 
@@ -249,12 +251,48 @@ en `tests/test_f3.py`; las 18 pruebas previas se complementan con once nuevas.
 - [Instrucciones completas de ejecución de F3](docs/entorno/ejecucion_f3.md).
 - [Verificación de preparación de F3 en Linux](docs/evidencias/f3/referencia_linux/README.md).
 
-## Estado del proyecto
 
-- **F1 técnica integrada a `main` mediante PR #1:** notebook ejecutado, ocho pruebas aprobadas, fuente fuera de Git e historial limpiado; mapa conceptual en Markdown y PDF.
-- **F2 ejecutada, verificada e integrada a main mediante PR #2:** notebook ejecutado en la `.venv` del proyecto con Python 3.13.17, 18 pruebas aprobadas y 15 controles de validación satisfactorios. Se generaron una base elegible de 27.633 anuncios, un grupo principal de 2.080 y un grupo adicional de 5.039 para evaluar la sensibilidad temporal. Las decisiones y evidencias quedaron documentadas; los datos procesados se conservan localmente, fuera de Git.
-- **Informe sumativo F1 y F2 elaborado:** DOCX y PDF con plantilla institucional, resultados verificados, tabla de faltantes, relación objetivos–secciones de notebook, mapa y referencias APA 7.
-- **F3 preparada:** módulos orientados a objetos, notebook y once pruebas adicionales. La verificación de preparación conserva los resultados de F2; falta ejecutar y guardar el notebook en el entorno local, completar el informe institucional y registrar la integración de F3 a `main`.
-- **F4 pendiente.**
+## Ejecución del notebook integrador F4
 
-La guía de F2 documenta las salidas y las comprobaciones de reproducción. La evidencia Windows se conserva como ejecución principal. La verificación independiente en Linux parte de un clon de main, utiliza Python 3.13.5 y las mismas cinco dependencias directas fijadas, y ejecuta todas las celdas mediante IPython. Reprodujo los conteos, los quince controles, las dieciocho pruebas y las catorce tablas agregadas de F2. El inventario Linux y el método se documentan por separado; los notebooks de evidencia no sustituyen a los principales de F1/ y F2/.
+Con los tres CSV locales de F3 y sus evidencias verificadas:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip check
+python -m unittest discover -s tests
+```
+
+Abrir [F4_Integracion_Comunicacion.ipynb](F4/F4_Integracion_Comunicacion.ipynb), seleccionar
+la `.venv` del proyecto, ejecutar **Jupyter: Restart Kernel and Run All Cells** y guardar
+con **Ctrl+S**. Sus once celdas comprueban procedencia, la evidencia de equivalencia F2/F3, eficiencia,
+resúmenes, pruebas y conservación de archivos. Los gráficos leen los CSV finales F3;
+se validan sus huellas, dimensiones y subconjuntos, sin volver a ejecutar el preprocesamiento.
+
+- [Ejecución y resultados de F4](docs/entorno/ejecucion_f4.md).
+- [Decisiones de visualización](F4/decisiones_visualizacion.md).
+- [Correspondencia con la evaluación](F4/correspondencia_evaluacion.md).
+- [Hallazgos agregados](docs/datos/f4/hallazgos_f4.csv).
+- [Informe final editable](docs/informes/MCDI500_Informe_Final_F4_Airbnb_Buenos_Aires.docx).
+- [Informe final en PDF](docs/informes/MCDI500_Informe_Final_F4_Airbnb_Buenos_Aires.pdf).
+- [Registro de cambios y commits verificados](changelog.md).
+- [Informe técnico F3](docs/informes/MCDI500_Informe_F3_Precios_Airbnb_Buenos_Aires.docx).
+
+## Avance documentado
+
+**F1–F3 integradas en main:** PR #1, #2, #3 y #4. Los notebooks y evidencias
+Windows conservan el reconocimiento, las decisiones de preprocesamiento y la
+implementación orientada a objetos. F3 registra 29 pruebas y 23 controles correctos.
+
+**F4 integra análisis y comunicación:** tres gráficos sobre precios en ARS, tablas de
+cobertura e informe institucional. Las salidas distribuidas fueron
+verificadas en Linux, Python 3.13.5, mediante ejecución secuencial de las once celdas
+originales en un proceso IPython nuevo: **42 pruebas y 20 controles satisfactorios**.
+Esa verificación se identifica por separado de la ejecución Jupyter local en Windows;
+su método, inventario y entradas reconstruidas están en
+[referencia_linux](docs/evidencias/f4/referencia_linux/README.md).
+
+Los resultados gráficos describen 2.080 anuncios con estancia del 27 al 28 de septiembre
+de 2026. En completos de capacidad 2 se comparan seis barrios con soporte mínimo de
+30 anuncios; para sensibilidad se contrastan capacidades 2–6 con la ampliación mensual.
+El principal representa el 7,53 % de la base elegible. La ampliación no ajusta inflación
+y contiene al principal; las conclusiones son descriptivas y no causales.
